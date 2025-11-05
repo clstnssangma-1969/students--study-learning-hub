@@ -1,4 +1,4 @@
-<!DOCTYPE html resources>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -519,6 +519,164 @@
             margin-bottom: 1rem;
         }
 
+        /* Subject Filter Section */
+        .subject-filter {
+            background: var(--white);
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .filter-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .filter-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .subject-card {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            background: var(--white);
+        }
+
+        .subject-card.active {
+            background: var(--white);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .subject-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .subject-card h3 {
+            color: var(--dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Computer Science Resources */
+        .cs-resources {
+            display: none;
+            padding: 3rem 0;
+        }
+
+        .cs-resources.active {
+            display: block;
+        }
+
+        .resource-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-title i {
+            color: var(--primary);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resource-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .resource-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .resource-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .resource-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .resource-content {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resource-rating {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
         /* CTA Section */
         .cta-section {
             background: var(--gradient);
@@ -676,7 +834,9 @@
             }
             
             .features-grid,
-            .feedback-grid {
+            .feedback-grid,
+            .subject-grid,
+            .resource-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -714,105 +874,249 @@
         </div>
     </section>
 
-    <!-- Resources Categories -->
-    <section class="section" style="background: var(--white);">
-        <div class="container">
-            <h2 class="section-title">Resource Categories</h2>
-            <p class="section-subtitle">Explore our comprehensive collection of learning materials organized by category</p>
-            
-            <div class="features-grid">
-                <!-- Study Guides -->
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">📚</div>
-                    <h3>Study Guides</h3>
-                    <p>Comprehensive study materials, notes, and revision guides for various subjects and courses.</p>
-                    <a href="#" class="feature-btn">Browse Guides</a>
+    <!-- Subject Filter Section -->
+    <section class="subject-filter">
+        <div class="filter-container">
+            <h2 class="filter-title">Browse by Subject</h2>
+            <div class="subject-grid">
+                <div class="subject-card" data-subject="all">
+                    <i class="fas fa-graduation-cap subject-icon"></i>
+                    <h3>All Subjects</h3>
                 </div>
-                
-                <!-- Video Tutorials -->
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🎥</div>
-                    <h3>Video Tutorials</h3>
-                    <p>Educational videos and recorded lectures covering complex topics and practical demonstrations.</p>
-                    <a href="#" class="feature-btn">Watch Tutorials</a>
+                <div class="subject-card" data-subject="cs">
+                    <i class="fas fa-laptop-code subject-icon"></i>
+                    <h3>Computer Science</h3>
                 </div>
-                
-                <!-- Practice Tests -->
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">📝</div>
-                    <h3>Practice Tests</h3>
-                    <p>Sample exams, quizzes, and practice questions to test your knowledge and prepare for assessments.</p>
-                    <a href="#" class="feature-btn">Take Tests</a>
+                <div class="subject-card" data-subject="math">
+                    <i class="fas fa-calculator subject-icon"></i>
+                    <h3>Mathematics</h3>
+                </div>
+                <div class="subject-card" data-subject="science">
+                    <i class="fas fa-flask subject-icon"></i>
+                    <h3>Science</h3>
+                </div>
+                <div class="subject-card" data-subject="business">
+                    <i class="fas fa-chart-line subject-icon"></i>
+                    <h3>Business</h3>
+                </div>
+                <div class="subject-card" data-subject="humanities">
+                    <i class="fas fa-book-open subject-icon"></i>
+                    <h3>Humanities</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Resources -->
-    <section class="section" style="background: var(--light-gray);">
+    <!-- Computer Science Resources Section -->
+    <section class="cs-resources" id="cs-resources">
         <div class="container">
-            <h2 class="section-title">Featured Resources</h2>
-            <p class="section-subtitle">Most popular and highly-rated learning materials from our community</p>
+            <h2 class="section-title">Computer Science Resources</h2>
+            <p class="section-subtitle">Explore programming tutorials, coding exercises, and computer science study materials</p>
             
-            <div class="feedback-grid">
-                <!-- Resource 1 -->
-                <div class="feedback-card fade-in">
-                    <div class="feedback-header">
-                        <div class="student-avatar" style="background: var(--gradient-secondary);">MG</div>
-                        <div class="student-info">
-                            <h4>Mathematics Guide</h4>
-                            <p>Advanced Calculus • Updated: Jan 2024</p>
+            <!-- Programming Languages -->
+            <div class="resource-category">
+                <h3 class="category-title"><i class="fas fa-code"></i> Programming Languages</h3>
+                <div class="resource-grid">
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>Python Fundamentals</h4>
+                                <p>Beginner to Advanced</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Complete Python programming course with interactive exercises, projects, and real-world applications.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-star"></i> 4.8 (1,250 reviews)
+                            </div>
+                            <a href="#" class="feature-btn">Access Course</a>
                         </div>
                     </div>
-                    <div class="feedback-content">
-                        Complete calculus study guide with practice problems, step-by-step solutions, and video explanations. Perfect for engineering students.
+                    
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>Java Programming</h4>
+                                <p>Object-Oriented Concepts</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Master Java programming with emphasis on OOP principles, data structures, and algorithm implementation.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-star"></i> 4.7 (980 reviews)
+                            </div>
+                            <a href="#" class="feature-btn">Access Course</a>
+                        </div>
                     </div>
-                    <div class="feedback-rating">
-                        <i class="fas fa-download"></i> 1,250+ downloads
+                    
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>JavaScript & Web Dev</h4>
+                                <p>Frontend Development</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Learn JavaScript fundamentals, DOM manipulation, and modern frameworks for web development.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-star"></i> 4.9 (1,520 reviews)
+                            </div>
+                            <a href="#" class="feature-btn">Access Course</a>
+                        </div>
                     </div>
-                    <a href="#" class="feature-btn" style="margin-top: 1rem; display: block; text-align: center;">
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
                 </div>
-                
-                <!-- Resource 2 -->
-                <div class="feedback-card fade-in">
-                    <div class="feedback-header">
-                        <div class="student-avatar" style="background: var(--gradient-accent);">PG</div>
-                        <div class="student-info">
-                            <h4>Programming Basics</h4>
-                            <p>Computer Science • Updated: Dec 2023</p>
+            </div>
+            
+            <!-- Data Structures & Algorithms -->
+            <div class="resource-category">
+                <h3 class="category-title"><i class="fas fa-sitemap"></i> Data Structures & Algorithms</h3>
+                <div class="resource-grid">
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>Algorithm Design</h4>
+                                <p>Problem Solving Techniques</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Comprehensive guide to algorithm design patterns, complexity analysis, and optimization strategies.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-download"></i> 2,100+ downloads
+                            </div>
+                            <a href="#" class="feature-btn">Download PDF</a>
                         </div>
                     </div>
-                    <div class="feedback-content">
-                        Beginner-friendly programming tutorial series covering Python fundamentals with interactive coding exercises and projects.
+                    
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>Data Structures Guide</h4>
+                                <p>Implementation & Applications</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Detailed explanations of common data structures with code examples in multiple programming languages.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-download"></i> 1,850+ downloads
+                            </div>
+                            <a href="#" class="feature-btn">Download PDF</a>
+                        </div>
                     </div>
-                    <div class="feedback-rating">
-                        <i class="fas fa-download"></i> 2,100+ downloads
+                    
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>LeetCode Solutions</h4>
+                                <p>Coding Interview Prep</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Curated collection of LeetCode problems with detailed solutions and explanations for technical interviews.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-download"></i> 3,200+ downloads
+                            </div>
+                            <a href="#" class="feature-btn">Access Resources</a>
+                        </div>
                     </div>
-                    <a href="#" class="feature-btn" style="margin-top: 1rem; display: block; text-align: center;">
-                        <i class="fas fa-download"></i> Access Course
-                    </a>
                 </div>
-                
-                <!-- Resource 3 -->
-                <div class="feedback-card fade-in">
-                    <div class="feedback-header">
-                        <div class="student-avatar" style="background: var(--primary);">SG</div>
-                        <div class="student-info">
-                            <h4>Study Planner Template</h4>
-                            <p>Productivity • Updated: Feb 2024</p>
+            </div>
+            
+            <!-- Web Development -->
+            <div class="resource-category">
+                <h3 class="category-title"><i class="fas fa-globe"></i> Web Development</h3>
+                <div class="resource-grid">
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>React.js Masterclass</h4>
+                                <p>Modern Frontend Development</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Complete React.js course covering hooks, context API, state management, and building real applications.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-star"></i> 4.8 (890 reviews)
+                            </div>
+                            <a href="#" class="feature-btn">Access Course</a>
                         </div>
                     </div>
-                    <div class="feedback-content">
-                        Customizable study schedule template with time management tips, goal setting worksheets, and progress tracking tools.
+                    
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>Node.js Backend</h4>
+                                <p>Server-Side JavaScript</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Build scalable backend applications with Node.js, Express, MongoDB, and RESTful API design principles.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-star"></i> 4.6 (720 reviews)
+                            </div>
+                            <a href="#" class="feature-btn">Access Course</a>
+                        </div>
                     </div>
-                    <div class="feedback-rating">
-                        <i class="fas fa-download"></i> 3,400+ downloads
+                    
+                    <div class="resource-card fade-in">
+                        <div class="resource-header">
+                            <div class="resource-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h4>Database Design</h4>
+                                <p>SQL & NoSQL Systems</p>
+                            </div>
+                        </div>
+                        <div class="resource-content">
+                            Comprehensive guide to database design, normalization, SQL queries, and working with NoSQL databases.
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-rating">
+                                <i class="fas fa-download"></i> 1,450+ downloads
+                            </div>
+                            <a href="#" class="feature-btn">Download Guide</a>
+                        </div>
                     </div>
-                    <a href="#" class="feature-btn" style="margin-top: 1rem; display: block; text-align: center;">
-                        <i class="fas fa-download"></i> Get Template
-                    </a>
                 </div>
             </div>
         </div>
@@ -886,9 +1190,44 @@
             }
         });
 
-        // Initialize animations
+        // Subject filter functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Add scroll animations
+            const subjectCards = document.querySelectorAll('.subject-card');
+            const csResources = document.getElementById('cs-resources');
+            
+            // Set Computer Science as active by default
+            subjectCards.forEach(card => {
+                if (card.dataset.subject === 'cs') {
+                    card.classList.add('active');
+                }
+            });
+            csResources.classList.add('active');
+            
+            // Subject filter click handler
+            subjectCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove active class from all cards
+                    subjectCards.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked card
+                    this.classList.add('active');
+                    
+                    // Show/hide resources based on selection
+                    const subject = this.dataset.subject;
+                    
+                    if (subject === 'cs') {
+                        csResources.classList.add('active');
+                    } else if (subject === 'all') {
+                        csResources.classList.add('active');
+                        // In a complete implementation, you would show all subjects
+                    } else {
+                        csResources.classList.remove('active');
+                        // In a complete implementation, you would show the selected subject
+                    }
+                });
+            });
+            
+            // Initialize animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -897,7 +1236,7 @@
                 });
             });
 
-            document.querySelectorAll('.feature-card, .feedback-card').forEach((el) => {
+            document.querySelectorAll('.resource-card').forEach((el) => {
                 observer.observe(el);
             });
         });
