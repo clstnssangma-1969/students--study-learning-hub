@@ -10,19 +10,26 @@
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
+            --primary-light: #a5b4fc;
             --secondary: #10b981;
+            --secondary-dark: #059669;
             --accent: #f59e0b;
+            --accent-dark: #d97706;
             --dark: #1e293b;
             --darker: #0f172a;
             --light: #f8fafc;
+            --light-gray: #f1f5f9;
             --text: #334155;
             --text-light: #64748b;
             --white: #ffffff;
             --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-dark: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
             --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
             --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-hero: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
             --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 35px 60px rgba(0, 0, 0, 0.2);
         }
 
         * {
@@ -60,6 +67,7 @@
         .navbar.scrolled {
             padding: 0.8rem 0;
             background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -81,6 +89,11 @@
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo i {
@@ -105,16 +118,30 @@
             font-size: 1rem;
         }
 
-        .nav-links a:hover {
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
             background: var(--gradient);
-            color: var(--white);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 80%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
         }
 
         .nav-links a.active {
-            background: var(--gradient);
-            color: var(--white);
+            color: var(--primary);
         }
 
         .auth-buttons {
@@ -134,6 +161,13 @@
             transition: all 0.3s ease;
         }
 
+        .btn-login:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
         .btn-signup {
             background: var(--gradient);
             color: var(--white);
@@ -145,14 +179,15 @@
             box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
         }
 
-        .btn-login:hover, .btn-signup:hover {
+        .btn-signup:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 25px rgba(99, 102, 241, 0.4);
+            background: var(--gradient-dark);
         }
 
         /* Hero Section */
         .hero {
-            background: var(--gradient);
+            background: var(--gradient-hero);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -167,7 +202,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.05"><polygon points="1000,100 1000,0 0,100"/></svg>');
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.15) 0%, transparent 50%);
             background-size: cover;
         }
 
@@ -187,12 +225,13 @@
             font-weight: 800;
             line-height: 1.1;
             animation: fadeInUp 1s ease;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 3rem;
-            opacity: 0.9;
+            opacity: 0.95;
             font-weight: 400;
             max-width: 700px;
             margin-left: auto;
@@ -223,6 +262,23 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
@@ -241,14 +297,29 @@
             color: var(--white);
         }
 
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
         .btn-secondary {
             background: var(--gradient-secondary);
             color: var(--white);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
         }
 
         .btn-accent {
             background: var(--gradient-accent);
             color: var(--white);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-accent:hover {
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
         }
 
         /* Sections */
@@ -262,6 +333,19 @@
             margin-bottom: 1rem;
             font-weight: 800;
             color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
         }
 
         .section-subtitle {
@@ -311,6 +395,11 @@
             width: 5px;
             height: 100%;
             background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .feedback-card:hover::before {
+            width: 8px;
         }
 
         .feedback-card:hover {
@@ -336,6 +425,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feedback-card:hover .student-avatar {
+            transform: scale(1.1);
         }
 
         .student-info h4 {
@@ -354,6 +448,18 @@
             color: var(--text);
             line-height: 1.8;
             margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .feedback-content::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-light);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+            font-family: serif;
         }
 
         .feedback-rating {
@@ -365,11 +471,27 @@
         .issues-section {
             background: var(--darker);
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .issues-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
         }
 
         .issues-section .section-title,
         .issues-section .section-subtitle {
             color: var(--white);
+            position: relative;
+            z-index: 1;
         }
 
         .issues-section .section-subtitle {
@@ -381,6 +503,8 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
             margin-top: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .issue-card {
@@ -394,9 +518,20 @@
             overflow: hidden;
         }
 
+        .issue-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
         .issue-card:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .issue-icon {
@@ -405,6 +540,12 @@
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .issue-card:hover .issue-icon {
+            transform: scale(1.2);
         }
 
         .issue-card h3 {
@@ -421,7 +562,7 @@
 
         /* Stats Section */
         .stats-section {
-            background: var(--white);
+            background: var(--light-gray);
             text-align: center;
         }
 
@@ -438,6 +579,24 @@
             background: var(--white);
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.03;
         }
 
         .stat-card:hover {
@@ -452,12 +611,16 @@
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
         }
 
         .stat-label {
             font-size: 1.1rem;
             color: var(--text-light);
             font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
         /* CTA Section */
@@ -466,16 +629,34 @@
             color: var(--white);
             text-align: center;
             padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
         }
 
         .cta-section .section-title {
             color: var(--white);
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section .section-subtitle {
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* Footer */
@@ -496,6 +677,19 @@
             font-size: 1.3rem;
             margin-bottom: 1.5rem;
             font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
         }
 
         .footer-links {
@@ -509,11 +703,37 @@
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .footer-links a:hover {
             color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-3px);
         }
 
         .footer-bottom {
@@ -547,6 +767,41 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
+        }
+
+        /* Particles Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float-particle 15s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         /* Responsive */
@@ -584,7 +839,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <i class="fas fa-graduation-cap"></i>
-                EduConnect
+                Socio-EduConnect
             </a>
             
             <div class="nav-links">
@@ -604,6 +859,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="particles" id="particles-js"></div>
         <div class="hero-content">
             <h1 class="fade-in">Where Education Meets Social Impact</h1>
             <p class="fade-in">Join a vibrant community of students sharing experiences, addressing social issues, and transforming education through collective voice</p>
@@ -724,6 +980,7 @@
 
     <!-- Social Issues Section -->
     <section id="social-issues" class="section issues-section">
+        <div class="particles" id="particles-js-2"></div>
         <div class="container">
             <h2 class="section-title">Addressing Social Issues Together</h2>
             <p class="section-subtitle">Student-led initiatives making a difference in education and society</p>
@@ -764,6 +1021,7 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
+        <div class="particles" id="particles-js-3"></div>
         <div class="container">
             <h2 class="section-title">Join Our Community Today</h2>
             <p class="section-subtitle">Be part of a movement that values student voices and drives positive change in education</p>
@@ -786,6 +1044,12 @@
                 <div class="footer-column">
                     <h3>EduConnect</h3>
                     <p>Empowering students through shared experiences, feedback, and social impact initiatives.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-column">
@@ -801,10 +1065,9 @@
                 <div class="footer-column">
                     <h3>Connect With Us</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> contact@educonnect.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Education St, Campus City</a></li>
                     </ul>
                 </div>
             </div>
@@ -852,9 +1115,41 @@
             window.requestAnimationFrame(step);
         }
 
+        // Create particles
+        function createParticles(containerId, count) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                
+                // Random animation delay and duration
+                const delay = Math.random() * 15;
+                const duration = 15 + Math.random() * 10;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
         // Initialize animations
         document.addEventListener('DOMContentLoaded', function() {
             animateStats();
+            
+            // Create particles for background effects
+            createParticles('particles-js', 30);
+            createParticles('particles-js-2', 20);
+            createParticles('particles-js-3', 25);
             
             // Add scroll animations
             const observer = new IntersectionObserver((entries) => {
