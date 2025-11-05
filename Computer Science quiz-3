@@ -1,0 +1,1395 @@
+<!DOCTYPE html: Part-1 MCQs 41 to 60 questions>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSLC 2025 - Computer Science MCQ Practice (Part 3)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .exam-info {
+            display: flex;
+            justify-content: space-between;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1rem;
+        }
+        
+        .content-area {
+            display: flex;
+            min-height: 600px;
+        }
+        
+        .questions-container {
+            flex: 3;
+            padding: 25px;
+            overflow-y: auto;
+            max-height: 600px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-left: 1px solid #eaeaea;
+        }
+        
+        .instructions {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .instructions h3 {
+            color: #2980b9;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .instructions h3::before {
+            content: "📝";
+        }
+        
+        .instructions ul {
+            margin-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eaeaea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .question-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        
+        .options {
+            margin-left: 10px;
+        }
+        
+        .option {
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option:hover {
+            background-color: #f0f7ff;
+            border-color: #3498db;
+        }
+        
+        .option.selected {
+            background-color: #d6eaf8;
+            border-left: 5px solid #3498db;
+            font-weight: 600;
+        }
+        
+        .option.correct {
+            background-color: #d4f8e4;
+            border-left: 5px solid #2ecc71;
+        }
+        
+        .option.incorrect {
+            background-color: #fde1e1;
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .option-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background-color: #ecf0f1;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .selected .option-label {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .correct .option-label {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .incorrect .option-label {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.2rem;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        #check-btn {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+        }
+        
+        #check-btn:hover:not(:disabled) {
+            background: linear-gradient(to right, #2980b9, #2573a7);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #reset-btn {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            color: white;
+        }
+        
+        #reset-btn:hover {
+            background: linear-gradient(to right, #c0392b, #a53226);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #show-all-btn {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            color: white;
+        }
+        
+        #show-all-btn:hover {
+            background: linear-gradient(to right, #27ae60, #219653);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background-color: #ecf0f1;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #2ecc71, #3498db);
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .score-card {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .score-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .quick-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+        
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quick-nav h3::before {
+            content: "🔍";
+        }
+        
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            width: 100%;
+            padding: 10px 5px;
+            background-color: #ecf0f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn:hover {
+            background-color: #d6dbdf;
+        }
+        
+        .nav-btn.current {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+        }
+        
+        .nav-btn.answered {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .timer {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .timer h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .timer h3::before {
+            content: "⏱️";
+        }
+        
+        .time-display {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .content-area {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                border-left: none;
+                border-top: 1px solid #eaeaea;
+            }
+            
+            .nav-buttons {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .exam-info {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SSLC 2025 - Computer Science MCQ Practice (Part 3)</h1>
+            <h3>Developed by Sir Celestine Sangma for SSLC students 2025 batch.</h3>
+            <p class="subtitle">Model Questions for SSLC Examination</p>
+            <h5><i>Each question carries 1(one) mark only.</i></h5>
+        </header>
+        
+        <div class="exam-info">
+            <div><strong>Exam:</strong> SSLC Computer Science</div>
+            <div><strong>Year:</strong> 2025</div>
+            <div><strong>Questions:</strong> 20</div>
+            <div><strong>Time:</strong> 60 Minutes</div>
+        </div>
+        
+        <div class="content-area">
+            <div class="questions-container">
+                <div class="instructions">
+                    <h3>Instructions:</h3>
+                    <ul>
+                        <li>This quiz contains 20 multiple-choice questions from the SSLC Computer Science syllabus.</li>
+                        <li>Select your answer by clicking on one of the options.</li>
+                        <li>Use the question navigation in the sidebar to jump to specific questions.</li>
+                        <li>Click "Check Answer" to verify your response and see the correct answer.</li>
+                        <li>Click "Reset All" to clear all answers and start over.</li>
+                    </ul>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-text">
+                        <span>Progress</span>
+                        <span id="progress-text">0/20 Answered</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Internet Protocols & Services</h2>
+                
+                <div id="question-1" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">41</span>
+                        IP stands for ________.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Internet Provider
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Intranet Provider
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Internet Protocol
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Intranet Protocol
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-2" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">42</span>
+                        Which of these services will not be provided by a typical Internet Service Provider?
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Email address
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Computer
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Connection to Internet
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Technical help
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-3" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">43</span>
+                        Google Chrome is a _______ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            web browser
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            web processor
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Webserver
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            None of these
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-4" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">44</span>
+                        An IP address is a string of_______ set of members separated by dots.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            3
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            4
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            7
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            5
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-5" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">45</span>
+                        DNS stands for_______.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Data Name System
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Domain Network Service
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Device Name System
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Domain Name System
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-6" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">46</span>
+                        Net is the domain name used for_______ organization.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            non-profit
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            commercial
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            networking
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            None of these
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-7" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">47</span>
+                        A name that uniquely identifies a website is______.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            DNS
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            DSL
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            URL
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            ADSL
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-8" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">48</span>
+                        The four numbers in the IP address are called _______ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Octets
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Octal numbers
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Decimal numbers
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            None of the above
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-9" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">49</span>
+                        A URL is made up of  ______ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            three parts
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            four parts
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            five parts
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            eight parts
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-10" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">50</span>
+                        _______ name is the name given to a website.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Domain
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            www
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            URL
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Path
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Web Browsers & HTML</h2>
+                
+                <div id="question-11" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">51</span>
+                        A hypertext link leading to error messages is called_____ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Dead
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Wrong
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Error
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            None of these
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-12" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">52</span>
+                        _____ is a text-only browser.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Netscape Navigator
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Mosaic
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Lynx
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Opera
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-13" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">53</span>
+                        HTML documents can be displayed in______
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            web server
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            web browser
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            web editor
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            None of these
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-14" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">54</span>
+                        MS Front Page, Netscape Composer and Adobe Dreamweaver are some of the_________editors.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Text
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Web Page
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Word
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Turbo
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-15" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">55</span>
+                        HTML was developed by ________ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Tim Berners Lee
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Jim Burton Lee
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Bruce Lee
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Peter Burton Lee
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-16" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">56</span>
+                        To create a web page using HTML, you need _______.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            HTML Editor
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Text Editor
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Graphic Editor
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Sound Editor
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-17" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">57</span>
+                        Dreamweaver is a program developed by _________ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Adobe
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Microsoft
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Corel Draw
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            None of these
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-18" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">58</span>
+                        The default color of ALINK is _______ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            Red
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            Blue
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            Green
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            Yellow
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-19" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">59</span>
+                        All the commands in markup language are enclosed within _____ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            &lt;&gt;
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            ( )
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            { }
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            [ ]
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div id="question-20" class="question-container">
+                    <div class="question-text">
+                        <span class="question-number">60</span>
+                        The text instructions used to instruct the web browsers on how to display a web page are known as _______ .
+                    </div>
+                    <div class="options">
+                        <div class="option" data-index="0">
+                            <span class="option-label">A</span>
+                            commands
+                        </div>
+                        <div class="option" data-index="1">
+                            <span class="option-label">B</span>
+                            tags
+                        </div>
+                        <div class="option" data-index="2">
+                            <span class="option-label">C</span>
+                            programs
+                        </div>
+                        <div class="option" data-index="3">
+                            <span class="option-label">D</span>
+                            comments
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="reset-btn">
+                        <span>↺</span> Reset All
+                    </button>
+                    <button id="show-all-btn">
+                        <span>👁️</span> Show All Answers
+                    </button>
+                    <button id="check-btn">
+                        <span>✓</span> Check Answers
+                    </button>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="score-card">
+                    <div class="score-title">Your Score</div>
+                    <div class="score-value" id="score-value">0/20</div>
+                </div>
+                
+                <div class="quick-nav">
+                    <h3>Question Navigation</h3>
+                    <div class="nav-buttons" id="nav-buttons">
+                        <!-- Navigation buttons will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="timer">
+                    <h3>Time Elapsed</h3>
+                    <div class="time-display" id="time-display">00:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Questions data with correct answers
+        const questionsData = [
+            { correctAnswer: 2 }, // Q41
+            { correctAnswer: 1 }, // Q42
+            { correctAnswer: 0 }, // Q43
+            { correctAnswer: 1 }, // Q44
+            { correctAnswer: 3 }, // Q45
+            { correctAnswer: 2 }, // Q46
+            { correctAnswer: 0 }, // Q47
+            { correctAnswer: 0 }, // Q48
+            { correctAnswer: 0 }, // Q49
+            { correctAnswer: 0 }, // Q50
+            { correctAnswer: 0 }, // Q51
+            { correctAnswer: 2 }, // Q52
+            { correctAnswer: 1 }, // Q53
+            { correctAnswer: 1 }, // Q54
+            { correctAnswer: 0 }, // Q55
+            { correctAnswer: 0 }, // Q56
+            { correctAnswer: 0 }, // Q57
+            { correctAnswer: 1 }, // Q58
+            { correctAnswer: 0 }, // Q59
+            { correctAnswer: 1 }  // Q60
+        ];
+
+        // User answers array
+        let userAnswers = Array(20).fill(null);
+        let score = 0;
+        let timerInterval;
+        let seconds = 0;
+
+        // DOM elements
+        const navButtonsContainer = document.getElementById('nav-buttons');
+        const progressBar = document.getElementById('progress');
+        const progressText = document.getElementById('progress-text');
+        const scoreValue = document.getElementById('score-value');
+        const timeDisplay = document.getElementById('time-display');
+        const checkBtn = document.getElementById('check-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const showAllBtn = document.getElementById('show-all-btn');
+
+        // Initialize the quiz
+        function initQuiz() {
+            createNavigationButtons();
+            setupEventListeners();
+            startTimer();
+            updateProgress();
+        }
+
+        // Create navigation buttons
+        function createNavigationButtons() {
+            navButtonsContainer.innerHTML = '';
+            
+            for (let i = 0; i < 20; i++) {
+                const button = document.createElement('button');
+                button.className = 'nav-btn';
+                button.textContent = i + 41;
+                button.addEventListener('click', () => {
+                    scrollToQuestion(i);
+                });
+                navButtonsContainer.appendChild(button);
+            }
+        }
+
+        // Scroll to a specific question
+        function scrollToQuestion(index) {
+            const questionElement = document.getElementById(`question-${index + 1}`);
+            if (questionElement) {
+                questionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Highlight the current question in navigation
+                document.querySelectorAll('.nav-btn').forEach((btn, i) => {
+                    btn.classList.toggle('current', i === index);
+                });
+            }
+        }
+
+        // Setup event listeners for options
+        function setupEventListeners() {
+            // Add click events to all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionContainer = this.closest('.question-container');
+                    const questionId = questionContainer.id;
+                    const questionIndex = parseInt(questionId.split('-')[1]) - 1;
+                    const optionIndex = parseInt(this.getAttribute('data-index'));
+                    
+                    selectOption(questionIndex, optionIndex);
+                });
+            });
+            
+            // Add event listeners to control buttons
+            checkBtn.addEventListener('click', checkAllAnswers);
+            resetBtn.addEventListener('click', resetQuiz);
+            showAllBtn.addEventListener('click', showAllAnswers);
+        }
+
+        // Select an option for a question
+        function selectOption(questionIndex, optionIndex) {
+            // Reset previous selection for this question
+            const questionElement = document.getElementById(`question-${questionIndex + 1}`);
+            questionElement.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Mark the selected option
+            const selectedOption = questionElement.querySelector(`.option[data-index="${optionIndex}"]`);
+            selectedOption.classList.add('selected');
+            
+            // Store the user's answer
+            userAnswers[questionIndex] = optionIndex;
+            
+            // Update the navigation button for this question
+            const navButton = navButtonsContainer.children[questionIndex];
+            navButton.classList.add('answered');
+            
+            updateProgress();
+        }
+
+        // Update progress bar and text
+        function updateProgress() {
+            const answeredCount = userAnswers.filter(answer => answer !== null).length;
+            const progressPercentage = (answeredCount / 20) * 100;
+            
+            progressBar.style.width = `${progressPercentage}%`;
+            progressText.textContent = `${answeredCount}/20 Answered`;
+            
+            // Enable check button if all questions are answered
+            checkBtn.disabled = answeredCount < 20;
+        }
+
+        // Check all answers and calculate score
+        function checkAllAnswers() {
+            score = 0;
+            
+            for (let i = 0; i < 20; i++) {
+                const questionElement = document.getElementById(`question-${i + 1}`);
+                const feedback = questionElement.querySelector('.feedback');
+                const feedbackIcon = feedback.querySelector('.feedback-icon');
+                const feedbackText = feedback.querySelector('.feedback-text');
+                
+                if (userAnswers[i] === questionsData[i].correctAnswer) {
+                    // Correct answer
+                    score++;
+                    feedback.classList.add('correct');
+                    feedback.classList.remove('incorrect');
+                    feedbackIcon.textContent = '✓';
+                    feedbackText.textContent = 'Correct! Well done.';
+                    
+                    // Highlight correct option
+                    questionElement.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                        if (parseInt(opt.getAttribute('data-index')) === questionsData[i].correctAnswer) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                } else {
+                    // Incorrect answer
+                    feedback.classList.add('incorrect');
+                    feedback.classList.remove('correct');
+                    feedbackIcon.textContent = '✗';
+                    feedbackText.textContent = `Incorrect. The correct answer is ${String.fromCharCode(65 + questionsData[i].correctAnswer)}.`;
+                    
+                    // Highlight correct and incorrect options
+                    questionElement.querySelectorAll('.option').forEach(opt => {
+                        const optIndex = parseInt(opt.getAttribute('data-index'));
+                        opt.classList.remove('correct', 'incorrect');
+                        
+                        if (optIndex === questionsData[i].correctAnswer) {
+                            opt.classList.add('correct');
+                        } else if (optIndex === userAnswers[i]) {
+                            opt.classList.add('incorrect');
+                        }
+                    });
+                }
+            }
+            
+            // Update score display
+            scoreValue.textContent = `${score}/20`;
+            
+            // Show alert with score
+            const percentage = (score / 20) * 100;
+            let message;
+            if (percentage >= 90) {
+                message = "Outstanding! You're a computer science expert!";
+            } else if (percentage >= 75) {
+                message = "Excellent work! You have a strong understanding of the concepts.";
+            } else if (percentage >= 60) {
+                message = "Good job! You passed with a solid score.";
+            } else if (percentage >= 50) {
+                message = "You passed, but consider reviewing the material again.";
+            } else {
+                message = "Keep studying! Review the questions you got wrong.";
+            }
+            
+            alert(`Quiz Completed!\nYour Score: ${score}/20 (${percentage}%)\n\n${message}`);
+        }
+
+        // Show all correct answers
+        function showAllAnswers() {
+            for (let i = 0; i < 20; i++) {
+                const questionElement = document.getElementById(`question-${i + 1}`);
+                const feedback = questionElement.querySelector('.feedback');
+                const feedbackIcon = feedback.querySelector('.feedback-icon');
+                const feedbackText = feedback.querySelector('.feedback-text');
+                
+                feedback.classList.add('correct');
+                feedback.classList.remove('incorrect');
+                feedbackIcon.textContent = '✓';
+                feedbackText.textContent = `Correct answer: ${String.fromCharCode(65 + questionsData[i].correctAnswer)}`;
+                
+                // Highlight correct option
+                questionElement.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect', 'selected');
+                    if (parseInt(opt.getAttribute('data-index')) === questionsData[i].correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                });
+                
+                // Mark as answered in navigation
+                const navButton = navButtonsContainer.children[i];
+                navButton.classList.add('answered');
+                
+                // Store the correct answer as user's answer
+                userAnswers[i] = questionsData[i].correctAnswer;
+            }
+            
+            updateProgress();
+            scoreValue.textContent = "20/20";
+        }
+
+        // Reset the quiz
+        function resetQuiz() {
+            if (confirm("Are you sure you want to reset all answers?")) {
+                userAnswers = Array(20).fill(null);
+                score = 0;
+                
+                // Reset all questions
+                for (let i = 0; i < 20; i++) {
+                    const questionElement = document.getElementById(`question-${i + 1}`);
+                    questionElement.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected', 'correct', 'incorrect');
+                    });
+                    
+                    const feedback = questionElement.querySelector('.feedback');
+                    feedback.classList.remove('correct', 'incorrect');
+                }
+                
+                // Reset navigation buttons
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('answered');
+                });
+                
+                // Reset score and progress
+                scoreValue.textContent = "0/20";
+                updateProgress();
+                
+                // Restart timer
+                clearInterval(timerInterval);
+                seconds = 0;
+                updateTimerDisplay();
+                startTimer();
+            }
+        }
+
+        // Start the timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                seconds++;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        // Update timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        // Initialize the quiz when the page loads
+        document.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
+    <h5>Developed by Sir Celestine Sangma for SSLC students of DBSM- 2025 batch</h5>
+</body>
+</html>
