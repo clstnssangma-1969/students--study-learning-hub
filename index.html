@@ -185,7 +185,7 @@
             background: var(--gradient-dark);
         }
 
-        /* Hero Section */
+        /* Hero Section - FIXED PADDING */
         .hero {
             background: var(--gradient-hero);
             min-height: 100vh;
@@ -193,6 +193,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 80px; /* Added padding to prevent navbar overlap */
         }
 
         .hero::before {
@@ -322,7 +323,7 @@
             box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
         }
 
-        /* Sections */
+        /* Sections - FIXED PADDING */
         .section {
             padding: 6rem 0;
         }
@@ -806,6 +807,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                padding-top: 100px; /* Increased padding for mobile */
+            }
+            
             .hero h1 {
                 font-size: 2.8rem;
             }
@@ -1181,4 +1186,3 @@
     </script>
 </body>
 </html>
-
