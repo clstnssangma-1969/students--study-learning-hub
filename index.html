@@ -365,6 +365,68 @@
             padding: 0 2rem;
         }
 
+        /* Picture Heading Layout */
+        .picture-heading {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .picture-heading.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .picture-heading-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s ease;
+        }
+
+        .picture-heading-image:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .picture-heading-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .picture-heading-content {
+            flex: 1;
+        }
+
+        .picture-heading-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .picture-heading-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .picture-heading-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
         /* Student Feedback Section */
         .feedback-section {
             background: var(--white);
@@ -835,6 +897,19 @@
             .mobile-menu {
                 display: block;
             }
+            
+            .picture-heading {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .picture-heading.reverse {
+                flex-direction: column;
+            }
+            
+            .picture-heading-content h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -909,8 +984,19 @@
     <!-- Student Feedback Section -->
     <section id="feedback" class="section feedback-section">
         <div class="container">
-            <h2 class="section-title">Student Voices & Experiences</h2>
-            <p class="section-subtitle">Real feedback from students sharing their educational journeys, challenges, and successes</p>
+            <!-- Picture Heading - Left Side -->
+            <div class="picture-heading fade-in">
+                <div class="picture-heading-image">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Students collaborating in classroom">
+                </div>
+                <div class="picture-heading-content">
+                    <h2>Student Voices & Experiences</h2>
+                    <p>Real feedback from students sharing their educational journeys, challenges, and successes. Our platform empowers students to share their experiences and learn from each other in a supportive community environment.</p>
+                    <a href="feedback.html" class="btn btn-primary">
+                        <i class="fas fa-comment-dots"></i> Share Your Feedback
+                    </a>
+                </div>
+            </div>
             
             <div class="feedback-grid">
                 <!-- Feedback 1 -->
@@ -976,12 +1062,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="feedback.html" class="btn btn-primary">
-                    <i class="fas fa-comment-dots"></i> Share Your Feedback
-                </a>
-            </div>
         </div>
     </section>
 
@@ -989,8 +1069,19 @@
     <section id="social-issues" class="section issues-section">
         <div class="particles" id="particles-js-2"></div>
         <div class="container">
-            <h2 class="section-title">Addressing Social Issues Together</h2>
-            <p class="section-subtitle">Student-led initiatives making a difference in education and society</p>
+            <!-- Picture Heading - Right Side -->
+            <div class="picture-heading reverse fade-in">
+                <div class="picture-heading-image">
+                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Students volunteering in community">
+                </div>
+                <div class="picture-heading-content">
+                    <h2>Addressing Social Issues Together</h2>
+                    <p>Student-led initiatives making a difference in education and society. Our community actively works to address pressing social issues through collaborative projects and awareness campaigns.</p>
+                    <a href="social-issues.html" class="btn btn-secondary">
+                        <i class="fas fa-hands-helping"></i> Explore Initiatives
+                    </a>
+                </div>
+            </div>
             
             <div class="issues-grid">
                 <!-- Issue 1 -->
@@ -1167,7 +1258,7 @@
                 });
             });
 
-            document.querySelectorAll('.feedback-card, .issue-card, .stat-card').forEach((el) => {
+            document.querySelectorAll('.feedback-card, .issue-card, .stat-card, .picture-heading').forEach((el) => {
                 observer.observe(el);
             });
         });
@@ -1188,7 +1279,3 @@
     </script>
 </body>
 </html>
-
-
-
-
