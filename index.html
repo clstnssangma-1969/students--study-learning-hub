@@ -1,22 +1,28 @@
-<!DOCTYPE htmlfor students help host by Sir Celestine Sangma>
+<!DOCTYPE html initiated by Sir Celestine Sangma>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Study Learning Hub - Premium Education Platform</title>
+    <title>EduConnect - Student Learning & Social Impact Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent: #3498db;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --text: #333;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --text: #334155;
+            --text-light: #64748b;
             --white: #ffffff;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
 
         * {
@@ -25,14 +31,15 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            background: var(--gradient);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: var(--light);
             color: var(--text);
-            margin: 0;
-            padding-top: 80px;
-            min-height: 100vh;
             overflow-x: hidden;
         }
 
@@ -40,19 +47,25 @@
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            padding: 1rem 0;
+            padding: 1.2rem 0;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(255, 255, 255, 0.98);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -63,7 +76,7 @@
             align-items: center;
             color: var(--dark);
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -77,7 +90,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
@@ -87,15 +100,16 @@
             font-weight: 600;
             transition: all 0.3s ease;
             padding: 10px 20px;
-            border-radius: 25px;
+            border-radius: 12px;
             position: relative;
+            font-size: 1rem;
         }
 
         .nav-links a:hover {
             background: var(--gradient);
             color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
         }
 
         .nav-links a.active {
@@ -114,7 +128,7 @@
             border: 2px solid var(--primary);
             color: var(--primary);
             padding: 10px 25px;
-            border-radius: 25px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -123,25 +137,27 @@
         .btn-signup {
             background: var(--gradient);
             color: var(--white);
-            padding: 10px 25px;
-            border-radius: 25px;
+            padding: 12px 28px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
         }
 
         .btn-login:hover, .btn-signup:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(99, 102, 241, 0.4);
         }
 
         /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 6rem 0 4rem;
-            color: var(--white);
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -151,30 +167,36 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.05"><polygon points="1000,100 1000,0 0,100"/></svg>');
             background-size: cover;
         }
 
         .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            color: var(--white);
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 1.5rem;
             font-weight: 800;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.1;
             animation: fadeInUp 1s ease;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            font-weight: 300;
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
             animation: fadeInUp 1s ease 0.2s both;
         }
 
@@ -183,146 +205,6 @@
             gap: 1.5rem;
             justify-content: center;
             animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        /* Features Section */
-        .features-section {
-            padding: 5rem 0;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            margin: 2rem 0;
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--white);
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .feature-card h3 {
-            color: var(--dark);
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            color: var(--text);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-btn {
-            background: var(--gradient);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .feature-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Stats Section */
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 20px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            color: var(--white);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 500;
         }
 
         /* Buttons */
@@ -334,30 +216,311 @@
             color: var(--primary);
             padding: 18px 35px;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 12px;
             font-weight: 700;
             font-size: 1.1rem;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255,255,255,0.4);
-            background: var(--light);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
         }
 
         .btn-primary {
-            background: var(--gradient);
-            color: var(--white);
+            background: var(--white);
+            color: var(--primary);
         }
 
         .btn-outline {
             background: transparent;
             border: 2px solid var(--white);
             color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-secondary);
+            color: var(--white);
+        }
+
+        .btn-accent {
+            background: var(--gradient-accent);
+            color: var(--white);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Student Feedback Section */
+        .feedback-section {
+            background: var(--white);
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feedback-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feedback-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .student-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+
+        .student-info h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .student-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .feedback-content {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .feedback-rating {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* Social Issues Section */
+        .issues-section {
+            background: var(--darker);
+            color: var(--white);
+        }
+
+        .issues-section .section-title,
+        .issues-section .section-subtitle {
+            color: var(--white);
+        }
+
+        .issues-section .section-subtitle {
+            opacity: 0.8;
+        }
+
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .issue-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .issue-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .issue-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .issue-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .issue-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            padding: 2.5rem 1.5rem;
+            border-radius: 20px;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient);
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 0;
+        }
+
+        .cta-section .section-title {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--darker);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         /* Animations */
@@ -376,10 +539,24 @@
             animation: fadeInUp 0.8s ease both;
         }
 
+        /* Floating Elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
             }
             
             .hero-buttons {
@@ -387,8 +564,8 @@
                 align-items: center;
             }
             
-            .features-grid {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 2.2rem;
             }
             
             .nav-links {
@@ -399,16 +576,6 @@
                 display: block;
             }
         }
-
-        /* Floating Elements */
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
     </style>
 </head>
 <body>
@@ -417,19 +584,19 @@
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <i class="fas fa-graduation-cap"></i>
-                StudyHub Pro
+                EduConnect
             </a>
             
             <div class="nav-links">
                 <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
-                <a href="courses.html"><i class="fas fa-book-open"></i> Courses</a>
-                <a href="resources.html"><i class="fas fa-download"></i> Resources</a>
-                <a href="community.html"><i class="fas fa-users"></i> Community</a>
+                <a href="feedback.html"><i class="fas fa-comment-dots"></i> Student Feedback</a>
+                <a href="social-issues.html"><i class="fas fa-hands-helping"></i> Social Issues</a>
+                <a href="resources.html"><i class="fas fa-book"></i> Learning Resources</a>
                 <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                 
                 <div class="auth-buttons">
                     <a href="login.html" class="btn-login">Login</a>
-                    <a href="signup.html" class="btn-signup">Sign Up Free</a>
+                    <a href="signup.html" class="btn-signup">Join Community</a>
                 </div>
             </div>
         </div>
@@ -438,154 +605,251 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="fade-in">Transform Your Learning Experience</h1>
-            <p class="fade-in">Join 50,000+ students mastering their academics with our AI-powered study platform and collaborative learning community</p>
+            <h1 class="fade-in">Where Education Meets Social Impact</h1>
+            <p class="fade-in">Join a vibrant community of students sharing experiences, addressing social issues, and transforming education through collective voice</p>
             
             <div class="hero-buttons">
-                <a href="#" class="btn btn-primary" onclick="startLearning()">
-                    <i class="fas fa-rocket"></i> Start Learning Free
+                <a href="#feedback" class="btn btn-primary">
+                    <i class="fas fa-comments"></i> View Student Feedback
                 </a>
-                <a href="#" class="btn btn-outline" onclick="exploreFeatures()">
-                    <i class="fas fa-play-circle"></i> Watch Demo
+                <a href="#social-issues" class="btn btn-outline">
+                    <i class="fas fa-handshake"></i> Explore Social Issues
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <div class="stats-section">
-        <div class="stat-card fade-in floating">
-            <div class="stat-number" id="studentsCount">50,000+</div>
-            <div class="stat-label">Active Students</div>
+    <section class="section stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card fade-in floating">
+                    <div class="stat-number" id="studentsCount">25,000+</div>
+                    <div class="stat-label">Active Students</div>
+                </div>
+                <div class="stat-card fade-in floating" style="animation-delay: 0.2s;">
+                    <div class="stat-number" id="feedbackCount">8,500+</div>
+                    <div class="stat-label">Feedback Shared</div>
+                </div>
+                <div class="stat-card fade-in floating" style="animation-delay: 0.4s;">
+                    <div class="stat-number" id="issuesCount">320+</div>
+                    <div class="stat-label">Social Issues Addressed</div>
+                </div>
+                <div class="stat-card fade-in floating" style="animation-delay: 0.6s;">
+                    <div class="stat-number" id="communitiesCount">150+</div>
+                    <div class="stat-label">Student Communities</div>
+                </div>
+            </div>
         </div>
-        <div class="stat-card fade-in floating" style="animation-delay: 0.2s;">
-            <div class="stat-number" id="coursesCount">1,200+</div>
-            <div class="stat-label">Premium Courses</div>
-        </div>
-        <div class="stat-card fade-in floating" style="animation-delay: 0.4s;">
-            <div class="stat-number" id="successRate">98%</div>
-            <div class="stat-label">Success Rate</div>
-        </div>
-        <div class="stat-card fade-in floating" style="animation-delay: 0.6s;">
-            <div class="stat-number" id="resourcesCount">5,000+</div>
-            <div class="stat-label">Study Resources</div>
-        </div>
-    </div>
+    </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <h2 class="section-title">Why Choose StudyHub?</h2>
-        
-        <div class="features-grid">
-            <!-- Feature 1 -->
-            <div class="feature-card fade-in">
-                <div class="feature-icon">📚</div>
-                <h3>Smart Study Resources</h3>
-                <p>Access AI-powered study materials, interactive quizzes, and personalized learning paths tailored to your academic goals and learning style.</p>
-                <a href="#" class="feature-btn" onclick="showFeature('resources')">
-                    Explore Resources <i class="fas fa-arrow-right"></i>
-                </a>
+    <!-- Student Feedback Section -->
+    <section id="feedback" class="section feedback-section">
+        <div class="container">
+            <h2 class="section-title">Student Voices & Experiences</h2>
+            <p class="section-subtitle">Real feedback from students sharing their educational journeys, challenges, and successes</p>
+            
+            <div class="feedback-grid">
+                <!-- Feedback 1 -->
+                <div class="feedback-card fade-in">
+                    <div class="feedback-header">
+                        <div class="student-avatar">JS</div>
+                        <div class="student-info">
+                            <h4>Jessica Smith</h4>
+                            <p>Computer Science, Year 3</p>
+                        </div>
+                    </div>
+                    <div class="feedback-content">
+                        "This platform helped me connect with peers facing similar academic challenges. The study groups formed here improved my grades significantly!"
+                    </div>
+                    <div class="feedback-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Feedback 2 -->
+                <div class="feedback-card fade-in">
+                    <div class="feedback-header">
+                        <div class="student-avatar">AR</div>
+                        <div class="student-info">
+                            <h4>Alex Rodriguez</h4>
+                            <p>Psychology, Year 2</p>
+                        </div>
+                    </div>
+                    <div class="feedback-content">
+                        "I was struggling with time management until I found the productivity resources shared by other students. Life-changing advice!"
+                    </div>
+                    <div class="feedback-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Feedback 3 -->
+                <div class="feedback-card fade-in">
+                    <div class="feedback-header">
+                        <div class="student-avatar">MP</div>
+                        <div class="student-info">
+                            <h4>Maya Patel</h4>
+                            <p>Engineering, Year 4</p>
+                        </div>
+                    </div>
+                    <div class="feedback-content">
+                        "The mentorship program connected me with industry professionals who provided invaluable career guidance during my final year."
+                    </div>
+                    <div class="feedback-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
             </div>
             
-            <!-- Feature 2 -->
-            <div class="feature-card fade-in">
-                <div class="feature-icon">👥</div>
-                <h3>Collaborative Learning</h3>
-                <p>Join real-time study sessions, participate in group discussions, and connect with peers and expert mentors from around the world.</p>
-                <a href="#" class="feature-btn" onclick="showFeature('collaboration')">
-                    Join Community <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <!-- Feature 3 -->
-            <div class="feature-card fade-in">
-                <div class="feature-icon">📊</div>
-                <h3>Progress Analytics</h3>
-                <p>Track your academic journey with detailed insights, performance analytics, and personalized progress reports with actionable feedback.</p>
-                <a href="#" class="feature-btn" onclick="showFeature('analytics')">
-                    View Dashboard <i class="fas fa-arrow-right"></i>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="feedback.html" class="btn btn-primary">
+                    <i class="fas fa-comment-dots"></i> Share Your Feedback
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- Social Issues Section -->
+    <section id="social-issues" class="section issues-section">
+        <div class="container">
+            <h2 class="section-title">Addressing Social Issues Together</h2>
+            <p class="section-subtitle">Student-led initiatives making a difference in education and society</p>
+            
+            <div class="issues-grid">
+                <!-- Issue 1 -->
+                <div class="issue-card fade-in">
+                    <div class="issue-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education Accessibility</h3>
+                    <p>Student volunteers providing free tutoring and resources to underprivileged communities to bridge the education gap.</p>
+                    <a href="#" class="btn btn-secondary">Get Involved</a>
+                </div>
+                
+                <!-- Issue 2 -->
+                <div class="issue-card fade-in">
+                    <div class="issue-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Mental Health Awareness</h3>
+                    <p>Creating safe spaces and resources for students to discuss mental health challenges and access support systems.</p>
+                    <a href="#" class="btn btn-secondary">Join Movement</a>
+                </div>
+                
+                <!-- Issue 3 -->
+                <div class="issue-card fade-in">
+                    <div class="issue-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability Initiatives</h3>
+                    <p>Student-led projects promoting environmental consciousness and sustainable practices on campus and beyond.</p>
+                    <a href="#" class="btn btn-secondary">Take Action</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Join Our Community Today</h2>
+            <p class="section-subtitle">Be part of a movement that values student voices and drives positive change in education</p>
+            
+            <div class="hero-buttons">
+                <a href="signup.html" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </a>
+                <a href="about.html" class="btn btn-outline">
+                    <i class="fas fa-play-circle"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EduConnect</h3>
+                    <p>Empowering students through shared experiences, feedback, and social impact initiatives.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="feedback.html">Student Feedback</a></li>
+                        <li><a href="social-issues.html">Social Issues</a></li>
+                        <li><a href="resources.html">Learning Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 EduConnect. All rights reserved. | Empowering Student Voices</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Interactive Functions
-        function startLearning() {
-            const btn = event.target.closest('.btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Your Account...';
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Welcome! Redirecting...';
-                setTimeout(() => {
-                    alert('🎉 Welcome to StudyHub Pro! Your premium learning journey begins now.');
-                    btn.innerHTML = originalText;
-                }, 1000);
-            }, 2000);
-        }
-
-        function exploreFeatures() {
-            alert('🚀 Discover how StudyHub Pro can transform your learning experience!');
-        }
-
-        function showFeature(feature) {
-            const features = {
-                resources: '📚 Access our vast library of smart study resources and AI-powered learning materials!',
-                collaboration: '👥 Connect with study partners and join our vibrant learning community!',
-                analytics: '📊 Track your progress with detailed analytics and personalized insights!'
-            };
-            
-            // Create a beautiful alert
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: white;
-                padding: 2rem;
-                border-radius: 20px;
-                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-                z-index: 10000;
-                max-width: 400px;
-                text-align: center;
-                border: 3px solid var(--primary);
-            `;
-            modal.innerHTML = `
-                <h3 style="color: var(--dark); margin-bottom: 1rem;">Feature Preview</h3>
-                <p style="margin-bottom: 1.5rem;">${features[feature]}</p>
-                <button onclick="this.parentElement.remove()" style="
-                    background: var(--gradient);
-                    color: white;
-                    border: none;
-                    padding: 10px 25px;
-                    border-radius: 25px;
-                    cursor: pointer;
-                    font-weight: 600;
-                ">Got It!</button>
-            `;
-            document.body.appendChild(modal);
-        }
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
 
         // Animate stats counting
         function animateStats() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                const target = parseInt(counter.textContent);
-                const increment = target / 100;
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current > target) {
-                        counter.textContent = target + '+';
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current) + '+';
-                    }
-                }, 20);
-            });
+            const students = document.getElementById('studentsCount');
+            const feedback = document.getElementById('feedbackCount');
+            const issues = document.getElementById('issuesCount');
+            const communities = document.getElementById('communitiesCount');
+            
+            animateValue(students, 0, 25000, 2000);
+            animateValue(feedback, 0, 8500, 2000);
+            animateValue(issues, 0, 320, 1500);
+            animateValue(communities, 0, 150, 1500);
+        }
+
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value.toLocaleString() + '+';
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
         }
 
         // Initialize animations
@@ -601,19 +865,22 @@
                 });
             });
 
-            document.querySelectorAll('.feature-card, .stat-card').forEach((el) => {
+            document.querySelectorAll('.feedback-card, .issue-card, .stat-card').forEach((el) => {
                 observer.observe(el);
             });
         });
 
-        // Add some interactive effects
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
     </script>
