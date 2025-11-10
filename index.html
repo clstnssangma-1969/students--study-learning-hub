@@ -522,7 +522,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid var(--light-gray);
@@ -533,15 +534,23 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
         .form-group textarea {
-            min-height: 100px;
+            min-height: 120px;
             resize: vertical;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
         }
 
         .image-preview {
@@ -615,15 +624,31 @@
             color: var(--text-light);
             line-height: 1.4;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .gallery-item-category {
+            font-size: 0.8rem;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 500;
         }
 
         .gallery-item-date {
             font-size: 0.8rem;
             color: var(--text-light);
-            margin-top: 0.5rem;
         }
 
         .empty-gallery {
@@ -1084,7 +1109,7 @@
                     
                     <div class="upload-section fade-in">
                         <h3><i class="fas fa-cloud-upload-alt"></i> Add Images to Your Gallery</h3>
-                        <p>Select images from your computer and add descriptions</p>
+                        <p>Select images from your computer and add detailed descriptions to share your story</p>
                         
                         <label for="file-input" class="upload-btn">
                             <i class="fas fa-folder-open"></i> Choose Images from Computer
@@ -1095,11 +1120,27 @@
                             <h4>Image Details</h4>
                             <div class="form-group">
                                 <label for="image-title">Image Title:</label>
-                                <input type="text" id="image-title" placeholder="Enter a title for your image">
+                                <input type="text" id="image-title" placeholder="Enter a descriptive title for your image">
+                                <small>Give your image a meaningful title that describes the content</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="image-category">Category:</label>
+                                <select id="image-category">
+                                    <option value="">Select a category</option>
+                                    <option value="campus-life">Campus Life</option>
+                                    <option value="academic-projects">Academic Projects</option>
+                                    <option value="community-service">Community Service</option>
+                                    <option value="events">Events</option>
+                                    <option value="study-groups">Study Groups</option>
+                                    <option value="achievements">Achievements</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <small>Choose the category that best fits your image</small>
                             </div>
                             <div class="form-group">
                                 <label for="image-description">Description:</label>
-                                <textarea id="image-description" placeholder="Describe your image..."></textarea>
+                                <textarea id="image-description" placeholder="Describe your image in detail... What's the story behind this image? What does it represent in your educational journey?"></textarea>
+                                <small>Share the story behind this image. What makes it special? What does it represent in your educational journey?</small>
                             </div>
                             <div class="image-preview">
                                 <img id="preview-image" class="preview-image" alt="Preview">
@@ -1299,6 +1340,7 @@
             const submitButton = document.getElementById('submit-image');
             const imageTitle = document.getElementById('image-title');
             const imageDescription = document.getElementById('image-description');
+            const imageCategory = document.getElementById('image-category');
             
             let currentFile = null;
             
@@ -1348,15 +1390,16 @@
                 
                 const title = imageTitle.value.trim() || currentFile.name;
                 const description = imageDescription.value.trim();
+                const category = imageCategory.value || 'other';
                 
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     // Create gallery item
-                    const galleryItem = createGalleryItem(title, description, e.target.result);
+                    const galleryItem = createGalleryItem(title, description, category, e.target.result);
                     galleryContainer.prepend(galleryItem); // Add to top
                     
                     // Save to localStorage
-                    saveImageToStorage(title, description, e.target.result);
+                    saveImageToStorage(title, description, category, e.target.result);
                     
                     // Reset form
                     resetUploadForm();
@@ -1368,18 +1411,30 @@
             });
             
             // Function to create a gallery item
-            function createGalleryItem(title, description, dataUrl) {
+            function createGalleryItem(title, description, category, dataUrl) {
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item fade-in';
                 
                 const uploadDate = new Date().toLocaleDateString();
+                const categoryLabels = {
+                    'campus-life': 'Campus Life',
+                    'academic-projects': 'Academic Projects',
+                    'community-service': 'Community Service',
+                    'events': 'Events',
+                    'study-groups': 'Study Groups',
+                    'achievements': 'Achievements',
+                    'other': 'Other'
+                };
                 
                 galleryItem.innerHTML = `
                     <img src="${dataUrl}" alt="${title}" class="gallery-image">
                     <div class="gallery-info">
                         <div class="gallery-item-title">${title}</div>
                         <div class="gallery-item-description">${description || 'No description provided'}</div>
-                        <div class="gallery-item-date">Uploaded: ${uploadDate}</div>
+                        <div class="gallery-item-meta">
+                            <span class="gallery-item-category">${categoryLabels[category] || 'Other'}</span>
+                            <span class="gallery-item-date">${uploadDate}</span>
+                        </div>
                     </div>
                 `;
                 
@@ -1387,11 +1442,12 @@
             }
             
             // Save image to localStorage
-            function saveImageToStorage(title, description, dataUrl) {
+            function saveImageToStorage(title, description, category, dataUrl) {
                 let images = JSON.parse(localStorage.getItem('educonnect-gallery')) || [];
                 images.unshift({ 
                     title, 
                     description, 
+                    category,
                     dataUrl, 
                     timestamp: Date.now(),
                     date: new Date().toLocaleDateString()
@@ -1412,7 +1468,7 @@
                     
                     // Add each image to the gallery (already sorted by timestamp)
                     images.forEach(image => {
-                        const galleryItem = createGalleryItem(image.title, image.description, image.dataUrl);
+                        const galleryItem = createGalleryItem(image.title, image.description, image.category, image.dataUrl);
                         galleryContainer.appendChild(galleryItem);
                     });
                 }
@@ -1425,6 +1481,7 @@
                 previewImage.src = '';
                 imageTitle.value = '';
                 imageDescription.value = '';
+                imageCategory.value = '';
                 fileInput.value = '';
                 currentFile = null;
             }
