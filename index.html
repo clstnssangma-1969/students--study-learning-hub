@@ -222,7 +222,7 @@
             overflow-y: auto;
         }
 
-        /* The Garos Section - Fixed spacing */
+        /* The Garos Section - Enhanced with image panel */
         .the-garos-section {
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(218, 165, 32, 0.05) 100%);
             border-radius: 20px;
@@ -232,6 +232,8 @@
             border: 2px solid rgba(139, 69, 19, 0.1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            gap: 2rem;
         }
 
         .the-garos-section::before {
@@ -242,6 +244,17 @@
             width: 100%;
             height: 5px;
             background: var(--gradient-garos);
+        }
+
+        .the-garos-content {
+            flex: 1;
+        }
+
+        .the-garos-image-panel {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .the-garos-title {
@@ -265,6 +278,56 @@
             height: 4px;
             background: var(--gradient-garos);
             border-radius: 2px;
+        }
+
+        .garos-image-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .garos-image-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #8b4513;
+            font-weight: 600;
+        }
+
+        .garos-image-preview {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(139, 69, 19, 0.2);
+        }
+
+        .garos-image-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .garos-image-btn {
+            background: var(--gradient-garos);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .garos-image-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
         }
 
         .daalni-koborrang {
@@ -1016,7 +1079,7 @@
             opacity: 0.9;
         }
 
-        /* Testimonials */
+        /* Testimonials - Enhanced with photo upload */
         .testimonials-section {
             background: var(--light-gray);
         }
@@ -1069,6 +1132,26 @@
             color: var(--white);
             font-weight: bold;
             font-size: 1.2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .author-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .author-avatar-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .author-info {
+            flex: 1;
         }
 
         .author-info h4 {
@@ -1079,6 +1162,20 @@
         .author-info p {
             color: var(--text-light);
             font-size: 0.9rem;
+        }
+
+        .testimonial-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .testimonial-card:hover .testimonial-actions {
+            opacity: 1;
         }
 
         /* CTA Section */
@@ -1229,6 +1326,14 @@
 
             .gallery-sidebar {
                 width: 300px;
+            }
+
+            .the-garos-section {
+                flex-direction: column;
+            }
+
+            .the-garos-image-panel {
+                width: 100%;
             }
         }
 
@@ -1405,6 +1510,10 @@
             .news-item:hover {
                 transform: none;
             }
+            
+            .testimonial-actions {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -1440,24 +1549,44 @@
     <!-- Main Content Layout -->
     <div class="main-container">
         <div class="content-area">
-            <!-- The Garos Section -->
+            <!-- The Garos Section - Enhanced with image panel -->
             <section class="the-garos-section fade-in">
-                <h2 class="the-garos-title">The Garos</h2>
-                <div class="daalni-koborrang">
-                    <h3 class="daalni-title">
-                        <i class="fas fa-scroll"></i> Da'alni Koborrang
-                    </h3>
-                    <div class="news-feed" id="news-feed">
-                        <!-- News items will be dynamically added here -->
-                        <div class="empty-news">
-                            <i class="fas fa-newspaper"></i>
-                            <h4>No News Yet</h4>
-                            <p>Add the first news item to get started</p>
+                <div class="the-garos-content">
+                    <h2 class="the-garos-title">The Garos</h2>
+                    <div class="daalni-koborrang">
+                        <h3 class="daalni-title">
+                            <i class="fas fa-scroll"></i> Da'alni Koborrang
+                        </h3>
+                        <div class="news-feed" id="news-feed">
+                            <!-- News items will be dynamically added here -->
+                            <div class="empty-news">
+                                <i class="fas fa-newspaper"></i>
+                                <h4>No News Yet</h4>
+                                <p>Add the first news item to get started</p>
+                            </div>
+                        </div>
+                        <button class="add-news-btn" id="add-news-btn">
+                            <i class="fas fa-plus"></i> Add News
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="the-garos-image-panel">
+                    <div class="garos-image-container">
+                        <h4 class="garos-image-title">Garos Community</h4>
+                        <img id="garos-image-preview" class="garos-image-preview" src="" alt="Garos Community Image" style="display: none;">
+                        <div id="garos-image-placeholder" style="height: 200px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); border-radius: 10px; margin-bottom: 1rem;">
+                            <i class="fas fa-image" style="font-size: 3rem; color: var(--text-light);"></i>
+                        </div>
+                        <div class="garos-image-actions">
+                            <button class="garos-image-btn" id="upload-garos-image">
+                                <i class="fas fa-upload"></i> Upload
+                            </button>
+                            <button class="garos-image-btn" id="change-garos-image" style="display: none;">
+                                <i class="fas fa-sync"></i> Change
+                            </button>
                         </div>
                     </div>
-                    <button class="add-news-btn" id="add-news-btn">
-                        <i class="fas fa-plus"></i> Add News
-                    </button>
                 </div>
             </section>
 
@@ -1615,23 +1744,32 @@
                 </div>
             </section>
 
-            <!-- Testimonials Section -->
+            <!-- Testimonials Section - Enhanced with photo upload -->
             <section class="section testimonials-section">
                 <div class="container">
                     <h2 class="section-title">What Students Say</h2>
                     <p class="section-subtitle">Hear from our community members about their EduConnect experience</p>
                     
-                    <div class="testimonials-grid">
+                    <div class="testimonials-grid" id="testimonials-container">
+                        <!-- Testimonials will be dynamically added here -->
                         <div class="testimonial-card fade-in">
                             <div class="testimonial-content">
                                 <p>EduConnect helped me find volunteer opportunities that aligned with my career goals. I've gained practical experience while making a real difference in my community.</p>
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-avatar">JS</div>
+                                <div class="author-avatar">
+                                    <img class="author-avatar-img" src="" alt="Jessica Marak">
+                                    <div class="author-avatar-text">JS</div>
+                                </div>
                                 <div class="author-info">
                                     <h4>Jessica Marak</h4>
                                     <p>Computer Science Major</p>
                                 </div>
+                            </div>
+                            <div class="testimonial-actions">
+                                <button class="action-btn edit-btn" data-testimonial="0">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                             </div>
                         </div>
                         
@@ -1640,11 +1778,19 @@
                                 <p>The feedback system allowed me to voice concerns about our curriculum. To my surprise, the administration actually implemented changes based on student input!</p>
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-avatar">MR</div>
+                                <div class="author-avatar">
+                                    <img class="author-avatar-img" src="" alt="Michael Sangma">
+                                    <div class="author-avatar-text">MR</div>
+                                </div>
                                 <div class="author-info">
                                     <h4>Michael Sangma</h4>
                                     <p>Business Administration</p>
                                 </div>
+                            </div>
+                            <div class="testimonial-actions">
+                                <button class="action-btn edit-btn" data-testimonial="1">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                             </div>
                         </div>
                         
@@ -1653,11 +1799,19 @@
                                 <p>As a student of Don Bosco School Mendal, EduConnect helped me connect with local community projects. It's been an amazing way to understand my new home while contributing positively.</p>
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-avatar">PC</div>
+                                <div class="author-avatar">
+                                    <img class="author-avatar-img" src="" alt="Priya Ch Marak">
+                                    <div class="author-avatar-text">PC</div>
+                                </div>
                                 <div class="author-info">
                                     <h4>Priya Ch Marak</h4>
                                     <p>Computer Science</p>
                                 </div>
+                            </div>
+                            <div class="testimonial-actions">
+                                <button class="action-btn edit-btn" data-testimonial="2">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1799,6 +1953,66 @@
         </div>
     </div>
 
+    <!-- Garos Image Upload Modal -->
+    <div class="modal" id="garos-image-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Upload Garos Image</h3>
+                <button class="close-btn" id="close-garos-image-modal">&times;</button>
+            </div>
+            <div class="upload-form">
+                <div class="form-group">
+                    <label for="garos-image-file">Select Image:</label>
+                    <input type="file" id="garos-image-file" accept="image/*">
+                    <small>Choose an image to represent the Garos community</small>
+                </div>
+                <div class="image-preview">
+                    <img id="garos-image-modal-preview" class="preview-image" alt="Garos Image Preview">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancel-garos-image">Cancel</button>
+                <button class="upload-btn" id="save-garos-image">Save Image</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Testimonial Modal -->
+    <div class="modal" id="edit-testimonial-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Testimonial</h3>
+                <button class="close-btn" id="close-edit-testimonial-modal">&times;</button>
+            </div>
+            <div class="upload-form">
+                <div class="form-group">
+                    <label for="edit-testimonial-name">Name:</label>
+                    <input type="text" id="edit-testimonial-name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="edit-testimonial-role">Role/Position:</label>
+                    <input type="text" id="edit-testimonial-role" placeholder="Enter role or position">
+                </div>
+                <div class="form-group">
+                    <label for="edit-testimonial-content">Testimonial Content:</label>
+                    <textarea id="edit-testimonial-content" placeholder="Enter testimonial content..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="testimonial-image-file">Profile Image:</label>
+                    <input type="file" id="testimonial-image-file" accept="image/*">
+                    <small>Upload a profile photo for this testimonial</small>
+                </div>
+                <div class="image-preview">
+                    <img id="testimonial-image-preview" class="preview-image" alt="Testimonial Image Preview">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancel-edit-testimonial">Cancel</button>
+                <button class="upload-btn" id="save-testimonial">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1893,6 +2107,30 @@
             const editNewsTitle = document.getElementById('edit-news-title');
             const editNewsContent = document.getElementById('edit-news-content');
             
+            // Garos image functionality
+            const garosImagePreview = document.getElementById('garos-image-preview');
+            const garosImagePlaceholder = document.getElementById('garos-image-placeholder');
+            const uploadGarosImageBtn = document.getElementById('upload-garos-image');
+            const changeGarosImageBtn = document.getElementById('change-garos-image');
+            const garosImageModal = document.getElementById('garos-image-modal');
+            const closeGarosImageModal = document.getElementById('close-garos-image-modal');
+            const cancelGarosImage = document.getElementById('cancel-garos-image');
+            const saveGarosImage = document.getElementById('save-garos-image');
+            const garosImageFile = document.getElementById('garos-image-file');
+            const garosImageModalPreview = document.getElementById('garos-image-modal-preview');
+            
+            // Testimonial functionality
+            const testimonialsContainer = document.getElementById('testimonials-container');
+            const editTestimonialModal = document.getElementById('edit-testimonial-modal');
+            const closeEditTestimonialModal = document.getElementById('close-edit-testimonial-modal');
+            const cancelEditTestimonial = document.getElementById('cancel-edit-testimonial');
+            const saveTestimonial = document.getElementById('save-testimonial');
+            const editTestimonialName = document.getElementById('edit-testimonial-name');
+            const editTestimonialRole = document.getElementById('edit-testimonial-role');
+            const editTestimonialContent = document.getElementById('edit-testimonial-content');
+            const testimonialImageFile = document.getElementById('testimonial-image-file');
+            const testimonialImagePreview = document.getElementById('testimonial-image-preview');
+            
             // Modal elements
             const deleteModal = document.getElementById('delete-modal');
             const editModal = document.getElementById('edit-modal');
@@ -1913,10 +2151,272 @@
             let currentImageToEdit = null;
             let currentNewsToDelete = null;
             let currentNewsToEdit = null;
+            let currentGarosImageFile = null;
+            let currentTestimonialToEdit = null;
+            let currentTestimonialImageFile = null;
             
-            // Load any existing images and news from localStorage
+            // Load any existing images, news, and testimonials from localStorage
             loadImagesFromStorage();
             loadNewsFromStorage();
+            loadGarosImageFromStorage();
+            loadTestimonialsFromStorage();
+            
+            // Garos image functionality
+            uploadGarosImageBtn.addEventListener('click', function() {
+                garosImageModal.style.display = 'flex';
+                garosImageFile.value = '';
+                garosImageModalPreview.style.display = 'none';
+            });
+            
+            changeGarosImageBtn.addEventListener('click', function() {
+                garosImageModal.style.display = 'flex';
+                garosImageFile.value = '';
+                garosImageModalPreview.style.display = 'none';
+            });
+            
+            garosImageFile.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                currentGarosImageFile = file;
+                
+                // Check if file is an image
+                if (!file.type.match('image.*')) {
+                    alert(`"${file.name}" is not a valid image file. Please select JPG, PNG, or GIF files.`);
+                    return;
+                }
+                
+                // Check file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+                    return;
+                }
+                
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    garosImageModalPreview.src = e.target.result;
+                    garosImageModalPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            saveGarosImage.addEventListener('click', function() {
+                if (!currentGarosImageFile) {
+                    alert('Please select an image first');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Save to localStorage
+                    localStorage.setItem('educonnect-garos-image', e.target.result);
+                    
+                    // Update preview
+                    garosImagePreview.src = e.target.result;
+                    garosImagePreview.style.display = 'block';
+                    garosImagePlaceholder.style.display = 'none';
+                    
+                    // Show change button
+                    uploadGarosImageBtn.style.display = 'none';
+                    changeGarosImageBtn.style.display = 'flex';
+                    
+                    // Close modal
+                    garosImageModal.style.display = 'none';
+                    
+                    // Show success message
+                    showSuccessMessage('Garos image updated successfully!');
+                };
+                reader.readAsDataURL(currentGarosImageFile);
+            });
+            
+            // Testimonial functionality
+            document.querySelectorAll('.testimonial-card .edit-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const testimonialIndex = parseInt(this.getAttribute('data-testimonial'));
+                    openEditTestimonialModal(testimonialIndex);
+                });
+            });
+            
+            testimonialImageFile.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                currentTestimonialImageFile = file;
+                
+                // Check if file is an image
+                if (!file.type.match('image.*')) {
+                    alert(`"${file.name}" is not a valid image file. Please select JPG, PNG, or GIF files.`);
+                    return;
+                }
+                
+                // Check file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+                    return;
+                }
+                
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    testimonialImagePreview.src = e.target.result;
+                    testimonialImagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            saveTestimonial.addEventListener('click', function() {
+                if (!currentTestimonialToEdit) return;
+                
+                const newName = editTestimonialName.value.trim();
+                const newRole = editTestimonialRole.value.trim();
+                const newContent = editTestimonialContent.value.trim();
+                
+                if (!newName || !newRole || !newContent) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                // Update testimonial in localStorage
+                updateTestimonialInStorage(
+                    currentTestimonialToEdit, 
+                    newName, 
+                    newRole, 
+                    newContent, 
+                    currentTestimonialImageFile
+                );
+                
+                // Close modal
+                editTestimonialModal.style.display = 'none';
+                
+                // Show success message
+                showSuccessMessage('Testimonial updated successfully!');
+            });
+            
+            // Open edit testimonial modal
+            function openEditTestimonialModal(testimonialIndex) {
+                currentTestimonialToEdit = testimonialIndex;
+                const testimonials = JSON.parse(localStorage.getItem('educonnect-testimonials')) || getDefaultTestimonials();
+                const testimonial = testimonials[testimonialIndex];
+                
+                editTestimonialName.value = testimonial.name;
+                editTestimonialRole.value = testimonial.role;
+                editTestimonialContent.value = testimonial.content;
+                
+                // Reset image preview
+                testimonialImagePreview.style.display = 'none';
+                testimonialImageFile.value = '';
+                currentTestimonialImageFile = null;
+                
+                // If testimonial has an image, show it
+                if (testimonial.image) {
+                    testimonialImagePreview.src = testimonial.image;
+                    testimonialImagePreview.style.display = 'block';
+                }
+                
+                editTestimonialModal.style.display = 'flex';
+            }
+            
+            // Update testimonial in localStorage
+            function updateTestimonialInStorage(index, name, role, content, imageFile) {
+                let testimonials = JSON.parse(localStorage.getItem('educonnect-testimonials')) || getDefaultTestimonials();
+                
+                if (imageFile) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        testimonials[index] = {
+                            name,
+                            role,
+                            content,
+                            image: e.target.result
+                        };
+                        localStorage.setItem('educonnect-testimonials', JSON.stringify(testimonials));
+                        
+                        // Update the testimonial in the UI
+                        updateTestimonialUI(index, name, role, content, e.target.result);
+                    };
+                    reader.readAsDataURL(imageFile);
+                } else {
+                    // Keep existing image if no new one is uploaded
+                    const existingImage = testimonials[index].image;
+                    testimonials[index] = {
+                        name,
+                        role,
+                        content,
+                        image: existingImage
+                    };
+                    localStorage.setItem('educonnect-testimonials', JSON.stringify(testimonials));
+                    
+                    // Update the testimonial in the UI
+                    updateTestimonialUI(index, name, role, content, existingImage);
+                }
+            }
+            
+            // Update testimonial UI
+            function updateTestimonialUI(index, name, role, content, image) {
+                const testimonialCard = testimonialsContainer.children[index];
+                const authorInfo = testimonialCard.querySelector('.author-info');
+                const authorAvatar = testimonialCard.querySelector('.author-avatar');
+                const testimonialContent = testimonialCard.querySelector('.testimonial-content p');
+                
+                authorInfo.querySelector('h4').textContent = name;
+                authorInfo.querySelector('p').textContent = role;
+                testimonialContent.textContent = content;
+                
+                if (image) {
+                    const avatarImg = authorAvatar.querySelector('.author-avatar-img');
+                    const avatarText = authorAvatar.querySelector('.author-avatar-text');
+                    
+                    avatarImg.src = image;
+                    avatarImg.style.display = 'block';
+                    avatarText.style.display = 'none';
+                }
+            }
+            
+            // Load testimonials from localStorage
+            function loadTestimonialsFromStorage() {
+                const testimonials = JSON.parse(localStorage.getItem('educonnect-testimonials')) || getDefaultTestimonials();
+                
+                testimonials.forEach((testimonial, index) => {
+                    updateTestimonialUI(index, testimonial.name, testimonial.role, testimonial.content, testimonial.image);
+                });
+            }
+            
+            // Get default testimonials
+            function getDefaultTestimonials() {
+                return [
+                    {
+                        name: "Jessica Marak",
+                        role: "Computer Science Major",
+                        content: "EduConnect helped me find volunteer opportunities that aligned with my career goals. I've gained practical experience while making a real difference in my community.",
+                        image: null
+                    },
+                    {
+                        name: "Michael Sangma",
+                        role: "Business Administration",
+                        content: "The feedback system allowed me to voice concerns about our curriculum. To my surprise, the administration actually implemented changes based on student input!",
+                        image: null
+                    },
+                    {
+                        name: "Priya Ch Marak",
+                        role: "Computer Science",
+                        content: "As a student of Don Bosco School Mendal, EduConnect helped me connect with local community projects. It's been an amazing way to understand my new home while contributing positively.",
+                        image: null
+                    }
+                ];
+            }
+            
+            // Load Garos image from localStorage
+            function loadGarosImageFromStorage() {
+                const garosImage = localStorage.getItem('educonnect-garos-image');
+                if (garosImage) {
+                    garosImagePreview.src = garosImage;
+                    garosImagePreview.style.display = 'block';
+                    garosImagePlaceholder.style.display = 'none';
+                    uploadGarosImageBtn.style.display = 'none';
+                    changeGarosImageBtn.style.display = 'flex';
+                }
+            }
             
             // News functionality
             addNewsBtn.addEventListener('click', function() {
@@ -2329,6 +2829,14 @@
                 editNewsModal.style.display = 'none';
             });
             
+            closeGarosImageModal.addEventListener('click', function() {
+                garosImageModal.style.display = 'none';
+            });
+            
+            closeEditTestimonialModal.addEventListener('click', function() {
+                editTestimonialModal.style.display = 'none';
+            });
+            
             cancelDelete.addEventListener('click', function() {
                 deleteModal.style.display = 'none';
             });
@@ -2345,6 +2853,14 @@
                 editNewsModal.style.display = 'none';
             });
             
+            cancelGarosImage.addEventListener('click', function() {
+                garosImageModal.style.display = 'none';
+            });
+            
+            cancelEditTestimonial.addEventListener('click', function() {
+                editTestimonialModal.style.display = 'none';
+            });
+            
             // Close modals when clicking outside
             window.addEventListener('click', function(event) {
                 if (event.target === deleteModal) {
@@ -2358,6 +2874,12 @@
                 }
                 if (event.target === editNewsModal) {
                     editNewsModal.style.display = 'none';
+                }
+                if (event.target === garosImageModal) {
+                    garosImageModal.style.display = 'none';
+                }
+                if (event.target === editTestimonialModal) {
+                    editTestimonialModal.style.display = 'none';
                 }
             });
             
