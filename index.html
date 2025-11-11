@@ -201,13 +201,13 @@
             display: flex;
             max-width: 1400px;
             margin: 0 auto;
-            padding-top: 120px; /* Increased padding to prevent overlap */
+            padding-top: 120px;
         }
 
         .content-area {
             flex: 1;
             padding: 0 2rem;
-            margin-top: 20px; /* Added margin for extra spacing */
+            margin-top: 20px;
         }
 
         .gallery-sidebar {
@@ -217,21 +217,23 @@
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
             border-left: 1px solid rgba(226, 232, 240, 0.8);
             position: sticky;
-            top: 120px; /* Increased to match new padding */
-            height: calc(100vh - 120px); /* Adjusted height calculation */
+            top: 120px;
+            height: calc(100vh - 120px);
             overflow-y: auto;
         }
 
-        /* The Garos Section - Fixed spacing */
+        /* The Garos Section - Enhanced with image panel */
         .the-garos-section {
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(218, 165, 32, 0.05) 100%);
             border-radius: 20px;
             padding: 2.5rem;
             margin-bottom: 3rem;
-            margin-top: 20px; /* Added margin to prevent overlap */
+            margin-top: 20px;
             border: 2px solid rgba(139, 69, 19, 0.1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            gap: 2rem;
         }
 
         .the-garos-section::before {
@@ -242,6 +244,17 @@
             width: 100%;
             height: 5px;
             background: var(--gradient-garos);
+        }
+
+        .the-garos-content {
+            flex: 1;
+        }
+
+        .the-garos-image-panel {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .the-garos-title {
@@ -265,6 +278,56 @@
             height: 4px;
             background: var(--gradient-garos);
             border-radius: 2px;
+        }
+
+        .garos-image-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .garos-image-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #8b4513;
+            font-weight: 600;
+        }
+
+        .garos-image-preview {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(139, 69, 19, 0.2);
+        }
+
+        .garos-image-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .garos-image-btn {
+            background: var(--gradient-garos);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .garos-image-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
         }
 
         .daalni-koborrang {
@@ -400,7 +463,7 @@
             color: #cd853f;
         }
 
-        /* Hero Section - Fixed padding */
+        /* Hero Section */
         .hero {
             background: var(--gradient-hero);
             min-height: 100vh;
@@ -408,7 +471,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 80px; /* Added padding to account for fixed navbar */
+            padding-top: 80px;
         }
 
         .hero::before {
@@ -463,7 +526,7 @@
         }
 
         /* Particles Container */
-        #particles-js {
+        .particles {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -1016,7 +1079,7 @@
             opacity: 0.9;
         }
 
-        /* Testimonials */
+        /* Testimonials - Enhanced with photo upload */
         .testimonials-section {
             background: var(--light-gray);
         }
@@ -1069,6 +1132,26 @@
             color: var(--white);
             font-weight: bold;
             font-size: 1.2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .author-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .author-avatar-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .author-info {
+            flex: 1;
         }
 
         .author-info h4 {
@@ -1079,6 +1162,20 @@
         .author-info p {
             color: var(--text-light);
             font-size: 0.9rem;
+        }
+
+        .testimonial-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .testimonial-card:hover .testimonial-actions {
+            opacity: 1;
         }
 
         /* CTA Section */
@@ -1230,6 +1327,14 @@
             .gallery-sidebar {
                 width: 300px;
             }
+
+            .the-garos-section {
+                flex-direction: column;
+            }
+
+            .the-garos-image-panel {
+                width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1287,7 +1392,7 @@
 
             .main-container {
                 flex-direction: column;
-                padding-top: 140px; /* Increased for mobile */
+                padding-top: 140px;
             }
 
             .gallery-sidebar {
@@ -1405,6 +1510,10 @@
             .news-item:hover {
                 transform: none;
             }
+            
+            .testimonial-actions {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -1440,24 +1549,44 @@
     <!-- Main Content Layout -->
     <div class="main-container">
         <div class="content-area">
-            <!-- The Garos Section -->
+            <!-- The Garos Section - Enhanced with image panel -->
             <section class="the-garos-section fade-in">
-                <h2 class="the-garos-title">The Garos</h2>
-                <div class="daalni-koborrang">
-                    <h3 class="daalni-title">
-                        <i class="fas fa-scroll"></i> Da'alni Koborrang
-                    </h3>
-                    <div class="news-feed" id="news-feed">
-                        <!-- News items will be dynamically added here -->
-                        <div class="empty-news">
-                            <i class="fas fa-newspaper"></i>
-                            <h4>No News Yet</h4>
-                            <p>Add the first news item to get started</p>
+                <div class="the-garos-content">
+                    <h2 class="the-garos-title">The Garos</h2>
+                    <div class="daalni-koborrang">
+                        <h3 class="daalni-title">
+                            <i class="fas fa-scroll"></i> Da'alni Koborrang
+                        </h3>
+                        <div class="news-feed" id="news-feed">
+                            <!-- News items will be dynamically added here -->
+                            <div class="empty-news">
+                                <i class="fas fa-newspaper"></i>
+                                <h4>No News Yet</h4>
+                                <p>Add the first news item to get started</p>
+                            </div>
+                        </div>
+                        <button class="add-news-btn" id="add-news-btn">
+                            <i class="fas fa-plus"></i> Add News
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="the-garos-image-panel">
+                    <div class="garos-image-container">
+                        <h4 class="garos-image-title">Garos Community</h4>
+                        <img id="garos-image-preview" class="garos-image-preview" src="" alt="Garos Community Image" style="display: none;">
+                        <div id="garos-image-placeholder" style="height: 200px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); border-radius: 10px; margin-bottom: 1rem;">
+                            <i class="fas fa-image" style="font-size: 3rem; color: var(--text-light);"></i>
+                        </div>
+                        <div class="garos-image-actions">
+                            <button class="garos-image-btn" id="upload-garos-image">
+                                <i class="fas fa-upload"></i> Upload
+                            </button>
+                            <button class="garos-image-btn" id="change-garos-image" style="display: none;">
+                                <i class="fas fa-sync"></i> Change
+                            </button>
                         </div>
                     </div>
-                    <button class="add-news-btn" id="add-news-btn">
-                        <i class="fas fa-plus"></i> Add News
-                    </button>
                 </div>
             </section>
 
@@ -1615,23 +1744,32 @@
                 </div>
             </section>
 
-            <!-- Testimonials Section -->
+            <!-- Testimonials Section - Enhanced with photo upload -->
             <section class="section testimonials-section">
                 <div class="container">
                     <h2 class="section-title">What Students Say</h2>
                     <p class="section-subtitle">Hear from our community members about their EduConnect experience</p>
                     
-                    <div class="testimonials-grid">
+                    <div class="testimonials-grid" id="testimonials-container">
+                        <!-- Testimonials will be dynamically added here -->
                         <div class="testimonial-card fade-in">
                             <div class="testimonial-content">
                                 <p>EduConnect helped me find volunteer opportunities that aligned with my career goals. I've gained practical experience while making a real difference in my community.</p>
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-avatar">JS</div>
+                                <div class="author-avatar">
+                                    <img class="author-avatar-img" src="" alt="Jessica Marak">
+                                    <div class="author-avatar-text">JS</div>
+                                </div>
                                 <div class="author-info">
                                     <h4>Jessica Marak</h4>
                                     <p>Computer Science Major</p>
                                 </div>
+                            </div>
+                            <div class="testimonial-actions">
+                                <button class="action-btn edit-btn" data-testimonial="0">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                             </div>
                         </div>
                         
@@ -1640,11 +1778,19 @@
                                 <p>The feedback system allowed me to voice concerns about our curriculum. To my surprise, the administration actually implemented changes based on student input!</p>
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-avatar">MR</div>
+                                <div class="author-avatar">
+                                    <img class="author-avatar-img" src="" alt="Michael Sangma">
+                                    <div class="author-avatar-text">MR</div>
+                                </div>
                                 <div class="author-info">
                                     <h4>Michael Sangma</h4>
                                     <p>Business Administration</p>
                                 </div>
+                            </div>
+                            <div class="testimonial-actions">
+                                <button class="action-btn edit-btn" data-testimonial="1">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                             </div>
                         </div>
                         
@@ -1653,11 +1799,19 @@
                                 <p>As a student of Don Bosco School Mendal, EduConnect helped me connect with local community projects. It's been an amazing way to understand my new home while contributing positively.</p>
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-avatar">PC</div>
+                                <div class="author-avatar">
+                                    <img class="author-avatar-img" src="" alt="Priya Ch Marak">
+                                    <div class="author-avatar-text">PC</div>
+                                </div>
                                 <div class="author-info">
                                     <h4>Priya Ch Marak</h4>
                                     <p>Computer Science</p>
                                 </div>
+                            </div>
+                            <div class="testimonial-actions">
+                                <button class="action-btn edit-btn" data-testimonial="2">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1799,6 +1953,66 @@
         </div>
     </div>
 
+    <!-- Garos Image Upload Modal -->
+    <div class="modal" id="garos-image-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Upload Garos Image</h3>
+                <button class="close-btn" id="close-garos-image-modal">&times;</button>
+            </div>
+            <div class="upload-form">
+                <div class="form-group">
+                    <label for="garos-image-file">Select Image:</label>
+                    <input type="file" id="garos-image-file" accept="image/*">
+                    <small>Choose an image to represent the Garos community</small>
+                </div>
+                <div class="image-preview">
+                    <img id="garos-image-modal-preview" class="preview-image" alt="Garos Image Preview">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancel-garos-image">Cancel</button>
+                <button class="upload-btn" id="save-garos-image">Save Image</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Testimonial Modal -->
+    <div class="modal" id="edit-testimonial-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Testimonial</h3>
+                <button class="close-btn" id="close-edit-testimonial-modal">&times;</button>
+            </div>
+            <div class="upload-form">
+                <div class="form-group">
+                    <label for="edit-testimonial-name">Name:</label>
+                    <input type="text" id="edit-testimonial-name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="edit-testimonial-role">Role/Position:</label>
+                    <input type="text" id="edit-testimonial-role" placeholder="Enter role or position">
+                </div>
+                <div class="form-group">
+                    <label for="edit-testimonial-content">Testimonial Content:</label>
+                    <textarea id="edit-testimonial-content" placeholder="Enter testimonial content..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="testimonial-image-file">Profile Image:</label>
+                    <input type="file" id="testimonial-image-file" accept="image/*">
+                    <small>Upload a profile photo for this testimonial</small>
+                </div>
+                <div class="image-preview">
+                    <img id="testimonial-image-preview" class="preview-image" alt="Testimonial Image Preview">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancel-edit-testimonial">Cancel</button>
+                <button class="upload-btn" id="save-testimonial">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1868,16 +2082,17 @@
 
         // Image upload functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const fileInput = document.getElementById('file-input');
-            const galleryContainer = document.getElementById('gallery-container');
-            const uploadForm = document.getElementById('upload-form');
-            const previewImage = document.getElementById('preview-image');
-            const submitButton = document.getElementById('submit-image');
-            const imageTitle = document.getElementById('image-title');
-            const imageDescription = document.getElementById('image-description');
-            const imageCategory = document.getElementById('image-category');
-            
-            // News functionality elements
+            // Initialize all functionality
+            initializeNewsFunctionality();
+            initializeImageUploadFunctionality();
+            initializeGarosImageFunctionality();
+            initializeTestimonialFunctionality();
+            initializeStatsCounter();
+            initializeParticles();
+        });
+
+        // News functionality
+        function initializeNewsFunctionality() {
             const newsFeed = document.getElementById('news-feed');
             const addNewsBtn = document.getElementById('add-news-btn');
             const addNewsModal = document.getElementById('add-news-modal');
@@ -1893,38 +2108,20 @@
             const editNewsTitle = document.getElementById('edit-news-title');
             const editNewsContent = document.getElementById('edit-news-content');
             
-            // Modal elements
-            const deleteModal = document.getElementById('delete-modal');
-            const editModal = document.getElementById('edit-modal');
-            const closeDeleteModal = document.getElementById('close-delete-modal');
-            const closeEditModal = document.getElementById('close-edit-modal');
-            const cancelDelete = document.getElementById('cancel-delete');
-            const cancelEdit = document.getElementById('cancel-edit');
-            const confirmDelete = document.getElementById('confirm-delete');
-            const saveEdit = document.getElementById('save-edit');
-            
-            // Edit form elements
-            const editImageTitle = document.getElementById('edit-image-title');
-            const editImageDescription = document.getElementById('edit-image-description');
-            const editImageCategory = document.getElementById('edit-image-category');
-            
-            let currentFile = null;
-            let currentImageToDelete = null;
-            let currentImageToEdit = null;
-            let currentNewsToDelete = null;
             let currentNewsToEdit = null;
-            
-            // Load any existing images and news from localStorage
-            loadImagesFromStorage();
+            let currentNewsToDelete = null;
+
+            // Load news from localStorage
             loadNewsFromStorage();
-            
-            // News functionality
+
+            // Add news button click
             addNewsBtn.addEventListener('click', function() {
                 newsTitle.value = '';
                 newsContent.value = '';
                 addNewsModal.style.display = 'flex';
             });
-            
+
+            // Save new news
             saveNews.addEventListener('click', function() {
                 const title = newsTitle.value.trim();
                 const content = newsContent.value.trim();
@@ -1947,7 +2144,8 @@
                 // Show success message
                 showSuccessMessage('News item added successfully!');
             });
-            
+
+            // Save edited news
             saveEditNews.addEventListener('click', function() {
                 if (!currentNewsToEdit) return;
                 
@@ -1971,14 +2169,30 @@
                 // Show success message
                 showSuccessMessage('News item updated successfully!');
             });
+
+            // Close modals
+            closeAddNewsModal.addEventListener('click', function() {
+                addNewsModal.style.display = 'none';
+            });
             
+            closeEditNewsModal.addEventListener('click', function() {
+                editNewsModal.style.display = 'none';
+            });
+            
+            cancelAddNews.addEventListener('click', function() {
+                addNewsModal.style.display = 'none';
+            });
+            
+            cancelEditNews.addEventListener('click', function() {
+                editNewsModal.style.display = 'none';
+            });
+
             // Function to create a news item
             function createNewsItem(title, content, id = null, date = null) {
                 const newsItem = document.createElement('div');
                 newsItem.className = 'news-item fade-in';
                 
                 const newsDate = date || new Date().toLocaleDateString();
-                // Generate a unique ID for the news if not provided
                 const newsId = id || Date.now().toString();
                 
                 newsItem.innerHTML = `
@@ -2013,7 +2227,7 @@
                 
                 return newsItem;
             }
-            
+
             // Open edit news modal
             function openEditNewsModal(newsId, title, content) {
                 currentNewsToEdit = { id: newsId, title, content };
@@ -2021,7 +2235,7 @@
                 editNewsContent.value = content;
                 editNewsModal.style.display = 'flex';
             }
-            
+
             // Update news item
             function updateNewsItem(newsId, title, content) {
                 const newsItem = document.querySelector(`.news-item .news-edit-btn[data-id="${newsId}"]`).closest('.news-item');
@@ -2031,7 +2245,7 @@
                 newsItem.querySelector('.news-content').textContent = content;
                 newsItem.querySelector('.news-date').textContent = newsDate;
             }
-            
+
             // Save news to localStorage
             function saveNewsToStorage(title, content) {
                 let news = JSON.parse(localStorage.getItem('educonnect-news')) || [];
@@ -2046,7 +2260,7 @@
                 });
                 localStorage.setItem('educonnect-news', JSON.stringify(news));
             }
-            
+
             // Update news in localStorage
             function updateNewsInStorage(newsId, title, content) {
                 let news = JSON.parse(localStorage.getItem('educonnect-news')) || [];
@@ -2060,14 +2274,14 @@
                     localStorage.setItem('educonnect-news', JSON.stringify(news));
                 }
             }
-            
+
             // Remove news from localStorage
             function removeNewsFromStorage(newsId) {
                 let news = JSON.parse(localStorage.getItem('educonnect-news')) || [];
                 news = news.filter(item => item.id !== newsId);
                 localStorage.setItem('educonnect-news', JSON.stringify(news));
             }
-            
+
             // Load news from localStorage
             function loadNewsFromStorage() {
                 const news = JSON.parse(localStorage.getItem('educonnect-news')) || [];
@@ -2079,27 +2293,47 @@
                         emptyState.remove();
                     }
                     
-                    // Add each news item to the feed (already sorted by timestamp)
+                    // Add each news item to the feed
                     news.forEach(item => {
                         const newsItem = createNewsItem(item.title, item.content, item.id, item.date);
                         newsFeed.appendChild(newsItem);
                     });
                 }
             }
+        }
+
+        // Image upload functionality
+        function initializeImageUploadFunctionality() {
+            const fileInput = document.getElementById('file-input');
+            const galleryContainer = document.getElementById('gallery-container');
+            const uploadForm = document.getElementById('upload-form');
+            const previewImage = document.getElementById('preview-image');
+            const submitButton = document.getElementById('submit-image');
+            const imageTitle = document.getElementById('image-title');
+            const imageDescription = document.getElementById('image-description');
+            const imageCategory = document.getElementById('image-category');
             
-            // Show empty news state
-            function showEmptyNewsState() {
-                const emptyState = document.createElement('div');
-                emptyState.className = 'empty-news';
-                emptyState.innerHTML = `
-                    <i class="fas fa-newspaper"></i>
-                    <h4>No News Yet</h4>
-                    <p>Add the first news item to get started</p>
-                `;
-                newsFeed.appendChild(emptyState);
-            }
+            const deleteModal = document.getElementById('delete-modal');
+            const editModal = document.getElementById('edit-modal');
+            const closeDeleteModal = document.getElementById('close-delete-modal');
+            const closeEditModal = document.getElementById('close-edit-modal');
+            const cancelDelete = document.getElementById('cancel-delete');
+            const cancelEdit = document.getElementById('cancel-edit');
+            const confirmDelete = document.getElementById('confirm-delete');
+            const saveEdit = document.getElementById('save-edit');
             
-            // Image upload functionality
+            const editImageTitle = document.getElementById('edit-image-title');
+            const editImageDescription = document.getElementById('edit-image-description');
+            const editImageCategory = document.getElementById('edit-image-category');
+            
+            let currentFile = null;
+            let currentImageToDelete = null;
+            let currentImageToEdit = null;
+
+            // Load images from localStorage
+            loadImagesFromStorage();
+
+            // File input change
             fileInput.addEventListener('change', function(e) {
                 const files = e.target.files;
                 
@@ -2126,7 +2360,7 @@
                     previewImage.style.display = 'block';
                     
                     // Set default title
-                    imageTitle.value = currentFile.name.replace(/\.[^/.]+$/, ""); // Remove extension
+                    imageTitle.value = currentFile.name.replace(/\.[^/.]+$/, "");
                     
                     // Show form
                     uploadForm.style.display = 'block';
@@ -2136,7 +2370,7 @@
                 };
                 reader.readAsDataURL(currentFile);
             });
-            
+
             // Submit image with description
             submitButton.addEventListener('click', function() {
                 if (!currentFile) return;
@@ -2149,7 +2383,7 @@
                 reader.onload = function(e) {
                     // Create gallery item
                     const galleryItem = createGalleryItem(title, description, category, e.target.result);
-                    galleryContainer.prepend(galleryItem); // Add to top
+                    galleryContainer.prepend(galleryItem);
                     
                     // Save to localStorage
                     saveImageToStorage(title, description, category, e.target.result);
@@ -2162,7 +2396,7 @@
                 };
                 reader.readAsDataURL(currentFile);
             });
-            
+
             // Function to create a gallery item
             function createGalleryItem(title, description, category, dataUrl, id = null, date = null) {
                 const galleryItem = document.createElement('div');
@@ -2179,7 +2413,6 @@
                     'other': 'Other'
                 };
                 
-                // Generate a unique ID for the image if not provided
                 const imageId = id || Date.now().toString();
                 
                 galleryItem.innerHTML = `
@@ -2216,7 +2449,7 @@
                 
                 return galleryItem;
             }
-            
+
             // Open delete confirmation modal
             function openDeleteModal(itemId, itemElement, type) {
                 if (type === 'image') {
@@ -2226,7 +2459,7 @@
                 }
                 deleteModal.style.display = 'flex';
             }
-            
+
             // Open edit modal
             function openEditModal(imageId, title, description, category, dataUrl) {
                 currentImageToEdit = { id: imageId, title, description, category, dataUrl };
@@ -2235,7 +2468,7 @@
                 editImageCategory.value = category;
                 editModal.style.display = 'flex';
             }
-            
+
             // Save edited image details
             saveEdit.addEventListener('click', function() {
                 if (!currentImageToEdit) return;
@@ -2256,7 +2489,7 @@
                 // Show success message
                 showSuccessMessage('Image details updated successfully!');
             });
-            
+
             // Confirm delete
             confirmDelete.addEventListener('click', function() {
                 if (currentImageToDelete) {
@@ -2292,7 +2525,7 @@
                         currentNewsToDelete.element.remove();
                         
                         // Show empty state if no news left
-                        if (newsFeed.children.length === 0) {
+                        if (document.getElementById('news-feed').children.length === 0) {
                             showEmptyNewsState();
                         }
                         
@@ -2306,7 +2539,7 @@
                 // Close modal
                 deleteModal.style.display = 'none';
             });
-            
+
             // Close modals
             closeDeleteModal.addEventListener('click', function() {
                 deleteModal.style.display = 'none';
@@ -2316,14 +2549,6 @@
                 editModal.style.display = 'none';
             });
             
-            closeAddNewsModal.addEventListener('click', function() {
-                addNewsModal.style.display = 'none';
-            });
-            
-            closeEditNewsModal.addEventListener('click', function() {
-                editNewsModal.style.display = 'none';
-            });
-            
             cancelDelete.addEventListener('click', function() {
                 deleteModal.style.display = 'none';
             });
@@ -2331,31 +2556,7 @@
             cancelEdit.addEventListener('click', function() {
                 editModal.style.display = 'none';
             });
-            
-            cancelAddNews.addEventListener('click', function() {
-                addNewsModal.style.display = 'none';
-            });
-            
-            cancelEditNews.addEventListener('click', function() {
-                editNewsModal.style.display = 'none';
-            });
-            
-            // Close modals when clicking outside
-            window.addEventListener('click', function(event) {
-                if (event.target === deleteModal) {
-                    deleteModal.style.display = 'none';
-                }
-                if (event.target === editModal) {
-                    editModal.style.display = 'none';
-                }
-                if (event.target === addNewsModal) {
-                    addNewsModal.style.display = 'none';
-                }
-                if (event.target === editNewsModal) {
-                    editNewsModal.style.display = 'none';
-                }
-            });
-            
+
             // Save image to localStorage
             function saveImageToStorage(title, description, category, dataUrl) {
                 let images = JSON.parse(localStorage.getItem('educonnect-gallery')) || [];
@@ -2372,7 +2573,7 @@
                 });
                 localStorage.setItem('educonnect-gallery', JSON.stringify(images));
             }
-            
+
             // Update image in localStorage
             function updateImageInStorage(imageId, title, description, category) {
                 let images = JSON.parse(localStorage.getItem('educonnect-gallery')) || [];
@@ -2385,14 +2586,14 @@
                     localStorage.setItem('educonnect-gallery', JSON.stringify(images));
                 }
             }
-            
+
             // Remove image from localStorage
             function removeImageFromStorage(imageId) {
                 let images = JSON.parse(localStorage.getItem('educonnect-gallery')) || [];
                 images = images.filter(img => img.id !== imageId);
                 localStorage.setItem('educonnect-gallery', JSON.stringify(images));
             }
-            
+
             // Update gallery item
             function updateGalleryItem(imageId, title, description, category) {
                 const galleryItem = document.querySelector(`.gallery-item .edit-btn[data-id="${imageId}"]`).closest('.gallery-item');
@@ -2410,7 +2611,7 @@
                 galleryItem.querySelector('.gallery-item-description').textContent = description || 'No description provided';
                 galleryItem.querySelector('.gallery-item-category').textContent = categoryLabels[category] || 'Other';
             }
-            
+
             // Load images from localStorage
             function loadImagesFromStorage() {
                 const images = JSON.parse(localStorage.getItem('educonnect-gallery')) || [];
@@ -2422,14 +2623,14 @@
                         emptyState.remove();
                     }
                     
-                    // Add each image to the gallery (already sorted by timestamp)
+                    // Add each image to the gallery
                     images.forEach(image => {
                         const galleryItem = createGalleryItem(image.title, image.description, image.category, image.dataUrl, image.id, image.date);
                         galleryContainer.appendChild(galleryItem);
                     });
                 }
             }
-            
+
             // Show empty state
             function showEmptyState() {
                 const emptyState = document.createElement('div');
@@ -2441,7 +2642,7 @@
                 `;
                 galleryContainer.appendChild(emptyState);
             }
-            
+
             // Reset upload form
             function resetUploadForm() {
                 uploadForm.style.display = 'none';
@@ -2453,93 +2654,385 @@
                 fileInput.value = '';
                 currentFile = null;
             }
-            
-            // Show success message
-            function showSuccessMessage(message) {
-                const successMsg = document.createElement('div');
-                successMsg.style.cssText = `
-                    position: fixed;
-                    top: 120px;
-                    right: 20px;
-                    background: var(--secondary);
-                    color: white;
-                    padding: 15px 25px;
-                    border-radius: 10px;
-                    box-shadow: var(--shadow-lg);
-                    z-index: 1000;
-                    animation: slideInRight 0.5s ease;
-                `;
-                successMsg.innerHTML = `
-                    <i class="fas fa-check-circle"></i> ${message}
-                `;
-                document.body.appendChild(successMsg);
-                
-                setTimeout(() => {
-                    successMsg.style.animation = 'slideOutRight 0.5s ease';
-                    setTimeout(() => {
-                        document.body.removeChild(successMsg);
-                    }, 500);
-                }, 3000);
-                
-                // Add animations
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes slideInRight {
-                        from { transform: translateX(100%); opacity: 0; }
-                        to { transform: translateX(0); opacity: 1; }
-                    }
-                    @keyframes slideOutRight {
-                        from { transform: translateX(0); opacity: 1; }
-                        to { transform: translateX(100%); opacity: 0; }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        });
 
-        // Animated counter for stats
-        function animateCounter(element, target, duration) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            const timer = setInterval(() => {
-                start += increment;
-                if (start >= target) {
-                    element.textContent = target.toLocaleString();
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(start).toLocaleString();
-                }
-            }, 16);
+            // Show empty news state
+            function showEmptyNewsState() {
+                const emptyState = document.createElement('div');
+                emptyState.className = 'empty-news';
+                emptyState.innerHTML = `
+                    <i class="fas fa-newspaper"></i>
+                    <h4>No News Yet</h4>
+                    <p>Add the first news item to get started</p>
+                `;
+                document.getElementById('news-feed').appendChild(emptyState);
+            }
         }
 
-        // Initialize counters when section comes into view
-        const observerOptions = {
-            threshold: 0.5
-        };
+        // Garos image functionality
+        function initializeGarosImageFunctionality() {
+            const garosImagePreview = document.getElementById('garos-image-preview');
+            const garosImagePlaceholder = document.getElementById('garos-image-placeholder');
+            const uploadGarosImageBtn = document.getElementById('upload-garos-image');
+            const changeGarosImageBtn = document.getElementById('change-garos-image');
+            const garosImageModal = document.getElementById('garos-image-modal');
+            const closeGarosImageModal = document.getElementById('close-garos-image-modal');
+            const cancelGarosImage = document.getElementById('cancel-garos-image');
+            const saveGarosImage = document.getElementById('save-garos-image');
+            const garosImageFile = document.getElementById('garos-image-file');
+            const garosImageModalPreview = document.getElementById('garos-image-modal-preview');
+            
+            let currentGarosImageFile = null;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(document.getElementById('students-count'), 12500, 2000);
-                    animateCounter(document.getElementById('institutions-count'), 240, 2000);
-                    animateCounter(document.getElementById('projects-count'), 580, 2000);
-                    animateCounter(document.getElementById('resources-count'), 4200, 2000);
-                    observer.unobserve(entry.target);
-                }
+            // Load Garos image from localStorage
+            loadGarosImageFromStorage();
+
+            // Upload Garos image button
+            uploadGarosImageBtn.addEventListener('click', function() {
+                garosImageModal.style.display = 'flex';
+                garosImageFile.value = '';
+                garosImageModalPreview.style.display = 'none';
             });
-        }, observerOptions);
 
-        observer.observe(document.querySelector('.stats-section'));
+            // Change Garos image button
+            changeGarosImageBtn.addEventListener('click', function() {
+                garosImageModal.style.display = 'flex';
+                garosImageFile.value = '';
+                garosImageModalPreview.style.display = 'none';
+            });
 
-        // Enhanced particles effect
-        function createParticles() {
+            // Garos image file change
+            garosImageFile.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                currentGarosImageFile = file;
+                
+                // Check if file is an image
+                if (!file.type.match('image.*')) {
+                    alert(`"${file.name}" is not a valid image file. Please select JPG, PNG, or GIF files.`);
+                    return;
+                }
+                
+                // Check file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+                    return;
+                }
+                
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    garosImageModalPreview.src = e.target.result;
+                    garosImageModalPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // Save Garos image
+            saveGarosImage.addEventListener('click', function() {
+                if (!currentGarosImageFile) {
+                    alert('Please select an image first');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Save to localStorage
+                    localStorage.setItem('educonnect-garos-image', e.target.result);
+                    
+                    // Update preview
+                    garosImagePreview.src = e.target.result;
+                    garosImagePreview.style.display = 'block';
+                    garosImagePlaceholder.style.display = 'none';
+                    
+                    // Show change button
+                    uploadGarosImageBtn.style.display = 'none';
+                    changeGarosImageBtn.style.display = 'flex';
+                    
+                    // Close modal
+                    garosImageModal.style.display = 'none';
+                    
+                    // Show success message
+                    showSuccessMessage('Garos image updated successfully!');
+                };
+                reader.readAsDataURL(currentGarosImageFile);
+            });
+
+            // Close modals
+            closeGarosImageModal.addEventListener('click', function() {
+                garosImageModal.style.display = 'none';
+            });
+            
+            cancelGarosImage.addEventListener('click', function() {
+                garosImageModal.style.display = 'none';
+            });
+
+            // Load Garos image from localStorage
+            function loadGarosImageFromStorage() {
+                const garosImage = localStorage.getItem('educonnect-garos-image');
+                if (garosImage) {
+                    garosImagePreview.src = garosImage;
+                    garosImagePreview.style.display = 'block';
+                    garosImagePlaceholder.style.display = 'none';
+                    uploadGarosImageBtn.style.display = 'none';
+                    changeGarosImageBtn.style.display = 'flex';
+                }
+            }
+        }
+
+        // Testimonial functionality
+        function initializeTestimonialFunctionality() {
+            const testimonialsContainer = document.getElementById('testimonials-container');
+            const editTestimonialModal = document.getElementById('edit-testimonial-modal');
+            const closeEditTestimonialModal = document.getElementById('close-edit-testimonial-modal');
+            const cancelEditTestimonial = document.getElementById('cancel-edit-testimonial');
+            const saveTestimonial = document.getElementById('save-testimonial');
+            const editTestimonialName = document.getElementById('edit-testimonial-name');
+            const editTestimonialRole = document.getElementById('edit-testimonial-role');
+            const editTestimonialContent = document.getElementById('edit-testimonial-content');
+            const testimonialImageFile = document.getElementById('testimonial-image-file');
+            const testimonialImagePreview = document.getElementById('testimonial-image-preview');
+            
+            let currentTestimonialToEdit = null;
+            let currentTestimonialImageFile = null;
+
+            // Load testimonials from localStorage
+            loadTestimonialsFromStorage();
+
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.testimonial-card .edit-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const testimonialIndex = parseInt(this.getAttribute('data-testimonial'));
+                    openEditTestimonialModal(testimonialIndex);
+                });
+            });
+
+            // Testimonial image file change
+            testimonialImageFile.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                currentTestimonialImageFile = file;
+                
+                // Check if file is an image
+                if (!file.type.match('image.*')) {
+                    alert(`"${file.name}" is not a valid image file. Please select JPG, PNG, or GIF files.`);
+                    return;
+                }
+                
+                // Check file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+                    return;
+                }
+                
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    testimonialImagePreview.src = e.target.result;
+                    testimonialImagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // Save testimonial
+            saveTestimonial.addEventListener('click', function() {
+                if (!currentTestimonialToEdit) return;
+                
+                const newName = editTestimonialName.value.trim();
+                const newRole = editTestimonialRole.value.trim();
+                const newContent = editTestimonialContent.value.trim();
+                
+                if (!newName || !newRole || !newContent) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                // Update testimonial in localStorage
+                updateTestimonialInStorage(
+                    currentTestimonialToEdit, 
+                    newName, 
+                    newRole, 
+                    newContent, 
+                    currentTestimonialImageFile
+                );
+                
+                // Close modal
+                editTestimonialModal.style.display = 'none';
+                
+                // Show success message
+                showSuccessMessage('Testimonial updated successfully!');
+            });
+
+            // Close modals
+            closeEditTestimonialModal.addEventListener('click', function() {
+                editTestimonialModal.style.display = 'none';
+            });
+            
+            cancelEditTestimonial.addEventListener('click', function() {
+                editTestimonialModal.style.display = 'none';
+            });
+
+            // Open edit testimonial modal
+            function openEditTestimonialModal(testimonialIndex) {
+                currentTestimonialToEdit = testimonialIndex;
+                const testimonials = JSON.parse(localStorage.getItem('educonnect-testimonials')) || getDefaultTestimonials();
+                const testimonial = testimonials[testimonialIndex];
+                
+                editTestimonialName.value = testimonial.name;
+                editTestimonialRole.value = testimonial.role;
+                editTestimonialContent.value = testimonial.content;
+                
+                // Reset image preview
+                testimonialImagePreview.style.display = 'none';
+                testimonialImageFile.value = '';
+                currentTestimonialImageFile = null;
+                
+                // If testimonial has an image, show it
+                if (testimonial.image) {
+                    testimonialImagePreview.src = testimonial.image;
+                    testimonialImagePreview.style.display = 'block';
+                }
+                
+                editTestimonialModal.style.display = 'flex';
+            }
+
+            // Update testimonial in localStorage
+            function updateTestimonialInStorage(index, name, role, content, imageFile) {
+                let testimonials = JSON.parse(localStorage.getItem('educonnect-testimonials')) || getDefaultTestimonials();
+                
+                if (imageFile) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        testimonials[index] = {
+                            name,
+                            role,
+                            content,
+                            image: e.target.result
+                        };
+                        localStorage.setItem('educonnect-testimonials', JSON.stringify(testimonials));
+                        
+                        // Update the testimonial in the UI
+                        updateTestimonialUI(index, name, role, content, e.target.result);
+                    };
+                    reader.readAsDataURL(imageFile);
+                } else {
+                    // Keep existing image if no new one is uploaded
+                    const existingImage = testimonials[index].image;
+                    testimonials[index] = {
+                        name,
+                        role,
+                        content,
+                        image: existingImage
+                    };
+                    localStorage.setItem('educonnect-testimonials', JSON.stringify(testimonials));
+                    
+                    // Update the testimonial in the UI
+                    updateTestimonialUI(index, name, role, content, existingImage);
+                }
+            }
+
+            // Update testimonial UI
+            function updateTestimonialUI(index, name, role, content, image) {
+                const testimonialCard = testimonialsContainer.children[index];
+                const authorInfo = testimonialCard.querySelector('.author-info');
+                const authorAvatar = testimonialCard.querySelector('.author-avatar');
+                const testimonialContent = testimonialCard.querySelector('.testimonial-content p');
+                
+                authorInfo.querySelector('h4').textContent = name;
+                authorInfo.querySelector('p').textContent = role;
+                testimonialContent.textContent = content;
+                
+                if (image) {
+                    const avatarImg = authorAvatar.querySelector('.author-avatar-img');
+                    const avatarText = authorAvatar.querySelector('.author-avatar-text');
+                    
+                    avatarImg.src = image;
+                    avatarImg.style.display = 'block';
+                    avatarText.style.display = 'none';
+                }
+            }
+
+            // Load testimonials from localStorage
+            function loadTestimonialsFromStorage() {
+                const testimonials = JSON.parse(localStorage.getItem('educonnect-testimonials')) || getDefaultTestimonials();
+                
+                testimonials.forEach((testimonial, index) => {
+                    updateTestimonialUI(index, testimonial.name, testimonial.role, testimonial.content, testimonial.image);
+                });
+            }
+
+            // Get default testimonials
+            function getDefaultTestimonials() {
+                return [
+                    {
+                        name: "Jessica Marak",
+                        role: "Computer Science Major",
+                        content: "EduConnect helped me find volunteer opportunities that aligned with my career goals. I've gained practical experience while making a real difference in my community.",
+                        image: null
+                    },
+                    {
+                        name: "Michael Sangma",
+                        role: "Business Administration",
+                        content: "The feedback system allowed me to voice concerns about our curriculum. To my surprise, the administration actually implemented changes based on student input!",
+                        image: null
+                    },
+                    {
+                        name: "Priya Ch Marak",
+                        role: "Computer Science",
+                        content: "As a student of Don Bosco School Mendal, EduConnect helped me connect with local community projects. It's been an amazing way to understand my new home while contributing positively.",
+                        image: null
+                    }
+                ];
+            }
+        }
+
+        // Stats counter
+        function initializeStatsCounter() {
+            // Animated counter for stats
+            function animateCounter(element, target, duration) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        element.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(start).toLocaleString();
+                    }
+                }, 16);
+            }
+
+            // Initialize counters when section comes into view
+            const observerOptions = {
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(document.getElementById('students-count'), 12500, 2000);
+                        animateCounter(document.getElementById('institutions-count'), 240, 2000);
+                        animateCounter(document.getElementById('projects-count'), 580, 2000);
+                        animateCounter(document.getElementById('resources-count'), 4200, 2000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(document.querySelector('.stats-section'));
+        }
+
+        // Particles effect
+        function initializeParticles() {
             const particlesContainer = document.getElementById('particles-js');
             if (!particlesContainer) return;
             
             // Clear any existing particles
             particlesContainer.innerHTML = '';
             
-            // Create more particles for a richer effect
+            // Create particles for a richer effect
             for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
                 particle.style.position = 'absolute';
@@ -2582,8 +3075,47 @@
             document.head.appendChild(style);
         }
 
-        // Initialize particles
-        createParticles();
+        // Show success message
+        function showSuccessMessage(message) {
+            const successMsg = document.createElement('div');
+            successMsg.style.cssText = `
+                position: fixed;
+                top: 120px;
+                right: 20px;
+                background: var(--secondary);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                animation: slideInRight 0.5s ease;
+            `;
+            successMsg.innerHTML = `
+                <i class="fas fa-check-circle"></i> ${message}
+            `;
+            document.body.appendChild(successMsg);
+            
+            setTimeout(() => {
+                successMsg.style.animation = 'slideOutRight 0.5s ease';
+                setTimeout(() => {
+                    document.body.removeChild(successMsg);
+                }, 500);
+            }, 3000);
+            
+            // Add animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOutRight {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2604,5 +3136,3 @@
     </script>
 </body>
 </html>
-
-
