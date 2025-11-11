@@ -27,6 +27,7 @@
             --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
             --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             --gradient-hero: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+            --gradient-garos: linear-gradient(135deg, #8b4513 0%, #daa520 100%);
             --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.15);
             --shadow-xl: 0 35px 60px rgba(0, 0, 0, 0.2);
@@ -218,6 +219,183 @@
             top: 80px;
             height: calc(100vh - 80px);
             overflow-y: auto;
+        }
+
+        /* The Garos Section */
+        .the-garos-section {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(218, 165, 32, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 2px solid rgba(139, 69, 19, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .the-garos-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-garos);
+        }
+
+        .the-garos-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #8b4513;
+            font-weight: 800;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .the-garos-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-garos);
+            border-radius: 2px;
+        }
+
+        .daalni-koborrang {
+            margin-top: 2rem;
+        }
+
+        .daalni-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #654321;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .daalni-title i {
+            color: #daa520;
+        }
+
+        .news-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .news-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 4px solid #daa520;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .news-content {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .news-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
+
+        .news-action-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-action-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        .news-edit-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        .news-delete-btn:hover {
+            background: #fecaca;
+            color: #dc2626;
+        }
+
+        .add-news-btn {
+            background: var(--gradient-garos);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1.5rem;
+            align-self: flex-start;
+        }
+
+        .add-news-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        .empty-news {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+        }
+
+        .empty-news i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #cd853f;
         }
 
         /* Hero Section */
@@ -1132,6 +1310,18 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .the-garos-section {
+                padding: 2rem;
+            }
+
+            .the-garos-title {
+                font-size: 1.8rem;
+            }
+
+            .daalni-title {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1159,6 +1349,28 @@
             .modal-content {
                 padding: 1.5rem;
             }
+
+            .the-garos-section {
+                padding: 1.5rem;
+            }
+
+            .the-garos-title {
+                font-size: 1.6rem;
+            }
+
+            .daalni-title {
+                font-size: 1.3rem;
+            }
+
+            .news-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .news-date {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
         }
 
         /* Touch-friendly improvements */
@@ -1176,6 +1388,10 @@
             }
             
             .gallery-item:hover {
+                transform: none;
+            }
+            
+            .news-item:hover {
                 transform: none;
             }
         }
@@ -1213,6 +1429,27 @@
     <!-- Main Content Layout -->
     <div class="main-container">
         <div class="content-area">
+            <!-- The Garos Section -->
+            <section class="the-garos-section fade-in">
+                <h2 class="the-garos-title">The Garos</h2>
+                <div class="daalni-koborrang">
+                    <h3 class="daalni-title">
+                        <i class="fas fa-scroll"></i> Da'alni Koborrang
+                    </h3>
+                    <div class="news-feed" id="news-feed">
+                        <!-- News items will be dynamically added here -->
+                        <div class="empty-news">
+                            <i class="fas fa-newspaper"></i>
+                            <h4>No News Yet</h4>
+                            <p>Add the first news item to get started</p>
+                        </div>
+                    </div>
+                    <button class="add-news-btn" id="add-news-btn">
+                        <i class="fas fa-plus"></i> Add News
+                    </button>
+                </div>
+            </section>
+
             <!-- Hero Section -->
             <section class="hero">
                 <div class="particles" id="particles-js"></div>
@@ -1455,10 +1692,10 @@
     <div class="modal" id="delete-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Delete Image</h3>
+                <h3 class="modal-title">Delete Item</h3>
                 <button class="close-btn" id="close-delete-modal">&times;</button>
             </div>
-            <p>Are you sure you want to delete this image? This action cannot be undone.</p>
+            <p>Are you sure you want to delete this item? This action cannot be undone.</p>
             <div class="modal-actions">
                 <button class="cancel-btn" id="cancel-delete">Cancel</button>
                 <button class="confirm-btn" id="confirm-delete">Delete</button>
@@ -1499,6 +1736,54 @@
             <div class="modal-actions">
                 <button class="cancel-btn" id="cancel-edit">Cancel</button>
                 <button class="upload-btn" id="save-edit">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add News Modal -->
+    <div class="modal" id="add-news-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add News Item</h3>
+                <button class="close-btn" id="close-add-news-modal">&times;</button>
+            </div>
+            <div class="upload-form">
+                <div class="form-group">
+                    <label for="news-title">News Title:</label>
+                    <input type="text" id="news-title" placeholder="Enter a title for your news">
+                </div>
+                <div class="form-group">
+                    <label for="news-content">News Content:</label>
+                    <textarea id="news-content" placeholder="Enter the news content..."></textarea>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancel-add-news">Cancel</button>
+                <button class="upload-btn" id="save-news">Add News</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit News Modal -->
+    <div class="modal" id="edit-news-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit News Item</h3>
+                <button class="close-btn" id="close-edit-news-modal">&times;</button>
+            </div>
+            <div class="upload-form">
+                <div class="form-group">
+                    <label for="edit-news-title">News Title:</label>
+                    <input type="text" id="edit-news-title" placeholder="Enter a title for your news">
+                </div>
+                <div class="form-group">
+                    <label for="edit-news-content">News Content:</label>
+                    <textarea id="edit-news-content" placeholder="Enter the news content..."></textarea>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancel-edit-news">Cancel</button>
+                <button class="upload-btn" id="save-edit-news">Save Changes</button>
             </div>
         </div>
     </div>
@@ -1581,6 +1866,22 @@
             const imageDescription = document.getElementById('image-description');
             const imageCategory = document.getElementById('image-category');
             
+            // News functionality elements
+            const newsFeed = document.getElementById('news-feed');
+            const addNewsBtn = document.getElementById('add-news-btn');
+            const addNewsModal = document.getElementById('add-news-modal');
+            const editNewsModal = document.getElementById('edit-news-modal');
+            const closeAddNewsModal = document.getElementById('close-add-news-modal');
+            const closeEditNewsModal = document.getElementById('close-edit-news-modal');
+            const cancelAddNews = document.getElementById('cancel-add-news');
+            const cancelEditNews = document.getElementById('cancel-edit-news');
+            const saveNews = document.getElementById('save-news');
+            const saveEditNews = document.getElementById('save-edit-news');
+            const newsTitle = document.getElementById('news-title');
+            const newsContent = document.getElementById('news-content');
+            const editNewsTitle = document.getElementById('edit-news-title');
+            const editNewsContent = document.getElementById('edit-news-content');
+            
             // Modal elements
             const deleteModal = document.getElementById('delete-modal');
             const editModal = document.getElementById('edit-modal');
@@ -1599,10 +1900,200 @@
             let currentFile = null;
             let currentImageToDelete = null;
             let currentImageToEdit = null;
+            let currentNewsToDelete = null;
+            let currentNewsToEdit = null;
             
-            // Load any existing images from localStorage
+            // Load any existing images and news from localStorage
             loadImagesFromStorage();
+            loadNewsFromStorage();
             
+            // News functionality
+            addNewsBtn.addEventListener('click', function() {
+                newsTitle.value = '';
+                newsContent.value = '';
+                addNewsModal.style.display = 'flex';
+            });
+            
+            saveNews.addEventListener('click', function() {
+                const title = newsTitle.value.trim();
+                const content = newsContent.value.trim();
+                
+                if (!title || !content) {
+                    alert('Please fill in both title and content');
+                    return;
+                }
+                
+                // Create news item
+                const newsItem = createNewsItem(title, content);
+                newsFeed.prepend(newsItem);
+                
+                // Save to localStorage
+                saveNewsToStorage(title, content);
+                
+                // Close modal
+                addNewsModal.style.display = 'none';
+                
+                // Show success message
+                showSuccessMessage('News item added successfully!');
+            });
+            
+            saveEditNews.addEventListener('click', function() {
+                if (!currentNewsToEdit) return;
+                
+                const newTitle = editNewsTitle.value.trim();
+                const newContent = editNewsContent.value.trim();
+                
+                if (!newTitle || !newContent) {
+                    alert('Please fill in both title and content');
+                    return;
+                }
+                
+                // Update the news in localStorage
+                updateNewsInStorage(currentNewsToEdit.id, newTitle, newContent);
+                
+                // Update the news item
+                updateNewsItem(currentNewsToEdit.id, newTitle, newContent);
+                
+                // Close modal
+                editNewsModal.style.display = 'none';
+                
+                // Show success message
+                showSuccessMessage('News item updated successfully!');
+            });
+            
+            // Function to create a news item
+            function createNewsItem(title, content) {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item fade-in';
+                
+                const newsDate = new Date().toLocaleDateString();
+                // Generate a unique ID for the news
+                const newsId = Date.now().toString();
+                
+                newsItem.innerHTML = `
+                    <div class="news-header">
+                        <div>
+                            <div class="news-title">${title}</div>
+                            <div class="news-date">${newsDate}</div>
+                        </div>
+                    </div>
+                    <div class="news-content">${content}</div>
+                    <div class="news-actions">
+                        <button class="news-action-btn news-edit-btn" data-id="${newsId}">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="news-action-btn news-delete-btn" data-id="${newsId}">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+                
+                // Add event listeners for action buttons
+                const editBtn = newsItem.querySelector('.news-edit-btn');
+                const deleteBtn = newsItem.querySelector('.news-delete-btn');
+                
+                editBtn.addEventListener('click', function() {
+                    openEditNewsModal(newsId, title, content);
+                });
+                
+                deleteBtn.addEventListener('click', function() {
+                    openDeleteModal(newsId, newsItem, 'news');
+                });
+                
+                return newsItem;
+            }
+            
+            // Open edit news modal
+            function openEditNewsModal(newsId, title, content) {
+                currentNewsToEdit = { id: newsId, title, content };
+                editNewsTitle.value = title;
+                editNewsContent.value = content;
+                editNewsModal.style.display = 'flex';
+            }
+            
+            // Update news item
+            function updateNewsItem(newsId, title, content) {
+                const newsItem = document.querySelector(`.news-item .news-edit-btn[data-id="${newsId}"]`).closest('.news-item');
+                const newsDate = new Date().toLocaleDateString();
+                
+                newsItem.querySelector('.news-title').textContent = title;
+                newsItem.querySelector('.news-content').textContent = content;
+                newsItem.querySelector('.news-date').textContent = newsDate;
+            }
+            
+            // Save news to localStorage
+            function saveNewsToStorage(title, content) {
+                let news = JSON.parse(localStorage.getItem('educonnect-news')) || [];
+                const newsId = Date.now().toString();
+                
+                news.unshift({ 
+                    id: newsId,
+                    title, 
+                    content,
+                    timestamp: Date.now(),
+                    date: new Date().toLocaleDateString()
+                });
+                localStorage.setItem('educonnect-news', JSON.stringify(news));
+            }
+            
+            // Update news in localStorage
+            function updateNewsInStorage(newsId, title, content) {
+                let news = JSON.parse(localStorage.getItem('educonnect-news')) || [];
+                const newsIndex = news.findIndex(item => item.id === newsId);
+                
+                if (newsIndex !== -1) {
+                    news[newsIndex].title = title;
+                    news[newsIndex].content = content;
+                    news[newsIndex].timestamp = Date.now();
+                    news[newsIndex].date = new Date().toLocaleDateString();
+                    localStorage.setItem('educonnect-news', JSON.stringify(news));
+                }
+            }
+            
+            // Remove news from localStorage
+            function removeNewsFromStorage(newsId) {
+                let news = JSON.parse(localStorage.getItem('educonnect-news')) || [];
+                news = news.filter(item => item.id !== newsId);
+                localStorage.setItem('educonnect-news', JSON.stringify(news));
+            }
+            
+            // Load news from localStorage
+            function loadNewsFromStorage() {
+                const news = JSON.parse(localStorage.getItem('educonnect-news')) || [];
+                
+                if (news.length > 0) {
+                    // Remove empty state
+                    const emptyState = newsFeed.querySelector('.empty-news');
+                    if (emptyState) {
+                        emptyState.remove();
+                    }
+                    
+                    // Add each news item to the feed (already sorted by timestamp)
+                    news.forEach(item => {
+                        const newsItem = createNewsItem(item.title, item.content);
+                        // Set the ID from storage
+                        const editBtn = newsItem.querySelector('.news-edit-btn');
+                        const deleteBtn = newsItem.querySelector('.news-delete-btn');
+                        editBtn.setAttribute('data-id', item.id);
+                        deleteBtn.setAttribute('data-id', item.id);
+                        newsFeed.appendChild(newsItem);
+                    });
+                }
+            }
+            
+            // Show empty news state
+            function showEmptyNewsState() {
+                const emptyState = document.createElement('div');
+                emptyState.className = 'empty-news';
+                emptyState.innerHTML = `
+                    <i class="fas fa-newspaper"></i>
+                    <h4>No News Yet</h4>
+                    <p>Add the first news item to get started</p>
+                `;
+                newsFeed.appendChild(emptyState);
+            }
+            
+            // Image upload functionality
             fileInput.addEventListener('change', function(e) {
                 const files = e.target.files;
                 
@@ -1714,15 +2205,19 @@
                 });
                 
                 deleteBtn.addEventListener('click', function() {
-                    openDeleteModal(imageId, galleryItem);
+                    openDeleteModal(imageId, galleryItem, 'image');
                 });
                 
                 return galleryItem;
             }
             
             // Open delete confirmation modal
-            function openDeleteModal(imageId, galleryItem) {
-                currentImageToDelete = { id: imageId, element: galleryItem };
+            function openDeleteModal(itemId, itemElement, type) {
+                if (type === 'image') {
+                    currentImageToDelete = { id: itemId, element: itemElement };
+                } else if (type === 'news') {
+                    currentNewsToDelete = { id: itemId, element: itemElement };
+                }
                 deleteModal.style.display = 'flex';
             }
             
@@ -1758,26 +2253,49 @@
             
             // Confirm delete
             confirmDelete.addEventListener('click', function() {
-                if (!currentImageToDelete) return;
-                
-                // Remove from localStorage
-                removeImageFromStorage(currentImageToDelete.id);
-                
-                // Remove from gallery with animation
-                currentImageToDelete.element.style.opacity = '0';
-                currentImageToDelete.element.style.transform = 'scale(0.8)';
-                
-                setTimeout(() => {
-                    currentImageToDelete.element.remove();
+                if (currentImageToDelete) {
+                    // Remove from localStorage
+                    removeImageFromStorage(currentImageToDelete.id);
                     
-                    // Show empty state if no images left
-                    if (galleryContainer.children.length === 0) {
-                        showEmptyState();
-                    }
+                    // Remove from gallery with animation
+                    currentImageToDelete.element.style.opacity = '0';
+                    currentImageToDelete.element.style.transform = 'scale(0.8)';
                     
-                    // Show success message
-                    showSuccessMessage('Image deleted successfully!');
-                }, 300);
+                    setTimeout(() => {
+                        currentImageToDelete.element.remove();
+                        
+                        // Show empty state if no images left
+                        if (galleryContainer.children.length === 0) {
+                            showEmptyState();
+                        }
+                        
+                        // Show success message
+                        showSuccessMessage('Image deleted successfully!');
+                    }, 300);
+                    
+                    currentImageToDelete = null;
+                } else if (currentNewsToDelete) {
+                    // Remove from localStorage
+                    removeNewsFromStorage(currentNewsToDelete.id);
+                    
+                    // Remove from news feed with animation
+                    currentNewsToDelete.element.style.opacity = '0';
+                    currentNewsToDelete.element.style.transform = 'scale(0.8)';
+                    
+                    setTimeout(() => {
+                        currentNewsToDelete.element.remove();
+                        
+                        // Show empty state if no news left
+                        if (newsFeed.children.length === 0) {
+                            showEmptyNewsState();
+                        }
+                        
+                        // Show success message
+                        showSuccessMessage('News item deleted successfully!');
+                    }, 300);
+                    
+                    currentNewsToDelete = null;
+                }
                 
                 // Close modal
                 deleteModal.style.display = 'none';
@@ -1792,12 +2310,28 @@
                 editModal.style.display = 'none';
             });
             
+            closeAddNewsModal.addEventListener('click', function() {
+                addNewsModal.style.display = 'none';
+            });
+            
+            closeEditNewsModal.addEventListener('click', function() {
+                editNewsModal.style.display = 'none';
+            });
+            
             cancelDelete.addEventListener('click', function() {
                 deleteModal.style.display = 'none';
             });
             
             cancelEdit.addEventListener('click', function() {
                 editModal.style.display = 'none';
+            });
+            
+            cancelAddNews.addEventListener('click', function() {
+                addNewsModal.style.display = 'none';
+            });
+            
+            cancelEditNews.addEventListener('click', function() {
+                editNewsModal.style.display = 'none';
             });
             
             // Close modals when clicking outside
@@ -1807,6 +2341,12 @@
                 }
                 if (event.target === editModal) {
                     editModal.style.display = 'none';
+                }
+                if (event.target === addNewsModal) {
+                    addNewsModal.style.display = 'none';
+                }
+                if (event.target === editNewsModal) {
+                    editNewsModal.style.display = 'none';
                 }
             });
             
