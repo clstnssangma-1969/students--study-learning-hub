@@ -196,17 +196,18 @@
             cursor: pointer;
         }
 
-        /* Main Layout */
+        /* Main Layout - FIXED */
         .main-container {
             display: flex;
             max-width: 1400px;
             margin: 0 auto;
-            padding-top: 80px;
+            padding-top: 120px; /* Increased padding to prevent overlap */
         }
 
         .content-area {
             flex: 1;
             padding: 0 2rem;
+            margin-top: 20px; /* Added margin for extra spacing */
         }
 
         .gallery-sidebar {
@@ -216,17 +217,18 @@
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
             border-left: 1px solid rgba(226, 232, 240, 0.8);
             position: sticky;
-            top: 80px;
-            height: calc(100vh - 80px);
+            top: 120px; /* Increased to match new padding */
+            height: calc(100vh - 120px); /* Adjusted height calculation */
             overflow-y: auto;
         }
 
-        /* The Garos Section */
+        /* The Garos Section - Fixed spacing */
         .the-garos-section {
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(218, 165, 32, 0.05) 100%);
             border-radius: 20px;
             padding: 2.5rem;
             margin-bottom: 3rem;
+            margin-top: 20px; /* Added margin to prevent overlap */
             border: 2px solid rgba(139, 69, 19, 0.1);
             position: relative;
             overflow: hidden;
@@ -398,7 +400,7 @@
             color: #cd853f;
         }
 
-        /* Hero Section */
+        /* Hero Section - Fixed padding */
         .hero {
             background: var(--gradient-hero);
             min-height: 100vh;
@@ -406,6 +408,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 80px; /* Added padding to account for fixed navbar */
         }
 
         .hero::before {
@@ -1284,6 +1287,7 @@
 
             .main-container {
                 flex-direction: column;
+                padding-top: 140px; /* Increased for mobile */
             }
 
             .gallery-sidebar {
@@ -1291,6 +1295,12 @@
                 position: static;
                 height: auto;
                 order: -1;
+                top: auto;
+                margin-top: 20px;
+            }
+
+            .content-area {
+                margin-top: 10px;
             }
 
             .upload-section {
@@ -1313,6 +1323,7 @@
 
             .the-garos-section {
                 padding: 2rem;
+                margin-top: 10px;
             }
 
             .the-garos-title {
@@ -2458,7 +2469,7 @@
                 const successMsg = document.createElement('div');
                 successMsg.style.cssText = `
                     position: fixed;
-                    top: 100px;
+                    top: 120px;
                     right: 20px;
                     background: var(--secondary);
                     color: white;
