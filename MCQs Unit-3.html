@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3: Operating System and Windows - Quiz</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 5px solid #fdbb2d;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .info-panel {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .score {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .quiz-container {
+            padding: 25px;
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+        }
+        
+        .question-number {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            color: #2c3e50;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        
+        .option {
+            padding: 15px;
+            background-color: #f1f2f6;
+            border: 2px solid #dfe4ea;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+        }
+        
+        .option:hover {
+            background-color: #e0e6f3;
+            border-color: #a4b0be;
+        }
+        
+        .option.selected {
+            background-color: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+        
+        .option.correct {
+            background-color: #2ecc71;
+            color: white;
+            border-color: #27ae60;
+        }
+        
+        .option.incorrect {
+            background-color: #e74c3c;
+            color: white;
+            border-color: #c0392b;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        #submit-btn {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+        }
+        
+        #submit-btn-always {
+            background: linear-gradient(to right, #e67e22, #d35400);
+        }
+        
+        .results-container {
+            padding: 30px;
+            text-align: center;
+            display: none;
+        }
+        
+        .results-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .score-display {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 20px 0;
+        }
+        
+        .score-text {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #7f8c8d;
+        }
+        
+        .restart-btn {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .info-panel {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .quiz-container {
+                padding: 15px;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Unit 3: Operating System and Windows</h1>
+            <p class="subtitle">Computer Science.Class - IX. Test your knowledge with this interactive quiz</p>
+        </header>
+        
+        <div class="info-panel">
+            <div class="timer">Time: <span id="time">20:00</span></div>
+            <div class="score">Score: <span id="score">0</span>/40</div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        
+        <div class="quiz-container" id="quiz-container">
+            <div class="question-container">
+                <div class="question-number">Question <span id="current-q">1</span> of 40</div>
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+            </div>
+            
+            <div class="navigation">
+                <button id="prev-btn" disabled>Previous</button>
+                <button id="next-btn">Next</button>
+                <button id="submit-btn">Submit Quiz</button>
+            </div>
+        </div>
+        
+        <div class="results-container" id="results-container">
+            <h2 class="results-title">Quiz Completed!</h2>
+            <div class="score-display" id="final-score">0</div>
+            <p class="score-text" id="score-text">You scored 0 out of 40</p>
+            <button class="restart-btn" id="restart-btn">Take Quiz Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                question: "What is the primary role of an operating system?",
+                options: [
+                    "To run application software like word processors",
+                    "To act as an interface between the user and the computer hardware",
+                    "To protect the computer from viruses",
+                    "To increase the computer's processing speed"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which of the following is NOT a function of an operating system?",
+                options: [
+                    "Process Management",
+                    "Main Memory Management",
+                    "Manufacturing Computer Hardware",
+                    "File Management"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which operating system is known for being a Command Line Interface (CLI)?",
+                options: [
+                    "MS-Windows",
+                    "Linux",
+                    "MS-DOS",
+                    "Android"
+                ],
+                answer: 2
+            },
+            {
+                question: "The 'DIR' command in DOS is used to:",
+                options: [
+                    "Delete a file",
+                    "View the list of contents in a drive",
+                    "Create a new directory",
+                    "Rename a file"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which DOS command is used to create a new directory?",
+                options: [
+                    "CD",
+                    "RD",
+                    "MD",
+                    "DEL"
+                ],
+                answer: 2
+            },
+            {
+                question: "The command 'CD..' is used to:",
+                options: [
+                    "Move to the root directory",
+                    "Move one directory back",
+                    "Create a directory named '..'",
+                    "Delete the current directory"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which command is used to delete a file in DOS?",
+                options: [
+                    "REMOVE",
+                    "ERASE",
+                    "DEL",
+                    "Both b and c"
+                ],
+                answer: 2
+            },
+            {
+                question: "The 'CLS' command in DOS is used to:",
+                options: [
+                    "Clear the screen",
+                    "Close a program",
+                    "List the system files",
+                    "Check disk space"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which command is used to display the contents of a text file in DOS?",
+                options: [
+                    "DISPLAY",
+                    "SHOW",
+                    "TYPE",
+                    "EDIT"
+                ],
+                answer: 2
+            },
+            {
+                question: "The 'ATTRIB' command in DOS is used to:",
+                options: [
+                    "Change file attributes",
+                    "Check disk for errors",
+                    "Copy disks",
+                    "Format a disk"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which of the following is a Linux command to list files and directories?",
+                options: [
+                    "dir",
+                    "list",
+                    "ls",
+                    "show"
+                ],
+                answer: 2
+            },
+            {
+                question: "In Linux, which command is used to change the current directory?",
+                options: [
+                    "chdir",
+                    "cd",
+                    "md",
+                    "cp"
+                ],
+                answer: 1
+            },
+            {
+                question: "The 'rm' command in Linux is used to:",
+                options: [
+                    "Remove or delete files",
+                    "Rename files",
+                    "Read mail",
+                    "Restart the machine"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which Linux command displays the manual for other commands?",
+                options: [
+                    "help",
+                    "manual",
+                    "man",
+                    "info"
+                ],
+                answer: 2
+            },
+            {
+                question: "MS-Windows is primarily known for its:",
+                options: [
+                    "Command Line Interface",
+                    "Graphical User Interface",
+                    "Multi-user time-sharing",
+                    "Open-source code"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which of the following is a Windows accessory?",
+                options: [
+                    "Calculator",
+                    "Photoshop",
+                    "Chrome",
+                    "Microsoft Word"
+                ],
+                answer: 0
+            },
+            {
+                question: "In Windows Calculator, which shortcut key switches to Scientific mode?",
+                options: [
+                    "Alt+1",
+                    "Alt+2",
+                    "Alt+3",
+                    "Alt+4"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which tool in MS-Paint is used to draw a perfect circle?",
+                options: [
+                    "Pencil",
+                    "Fill Color",
+                    "Oval shape tool",
+                    "Text tool"
+                ],
+                answer: 2
+            },
+            {
+                question: "What is the shortcut key to save a file in Notepad or Paint?",
+                options: [
+                    "Ctrl + O",
+                    "Ctrl + S",
+                    "Ctrl + P",
+                    "Ctrl + N"
+                ],
+                answer: 1
+            },
+            {
+                question: "A mobile operating system is responsible for:",
+                options: [
+                    "Determining the functions and features of the mobile device",
+                    "Only making phone calls",
+                    "Only connecting to the internet",
+                    "Manufacturing the device's hardware"
+                ],
+                answer: 0
+            },
+            {
+                question: "The Android operating system is derived from:",
+                options: [
+                    "Windows",
+                    "Unix",
+                    "Linux",
+                    "Symbian"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which company is the primary backer of the Android OS?",
+                options: [
+                    "Apple",
+                    "Microsoft",
+                    "Google",
+                    "Nokia"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which mobile OS was once the market leader but has since lost significant share?",
+                options: [
+                    "Android",
+                    "iOS",
+                    "Symbian",
+                    "BlackBerry OS"
+                ],
+                answer: 2
+            },
+            {
+                question: "What does the acronym 'GNU' stand for?",
+                options: [
+                    "General Unix",
+                    "GNU's Not Unix",
+                    "Global Network Utility",
+                    "Graphical Network Unit"
+                ],
+                answer: 1
+            },
+            {
+                question: "The primary function of OS in Process Management is:",
+                options: [
+                    "To manage the allocation of system resources",
+                    "To manage the computer's power supply",
+                    "To design new software processes",
+                    "To cool down the CPU"
+                ],
+                answer: 0
+            },
+            {
+                question: "Virtual memory is created by the OS on the:",
+                options: [
+                    "RAM",
+                    "CPU",
+                    "Hard Drive",
+                    "Monitor"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which DOS command is used to compare the contents of two disks?",
+                options: [
+                    "DISKCOPY",
+                    "COMPARE",
+                    "DISKCOMP",
+                    "CHKDSK"
+                ],
+                answer: 2
+            },
+            {
+                question: "The 'FORMAT' command in DOS is used to:",
+                options: [
+                    "Delete all files from a disk",
+                    "Prepare a disk for first use",
+                    "Check the disk's health",
+                    "Copy system files to a disk"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which Linux command is used to search for patterns in a file?",
+                options: [
+                    "find",
+                    "search",
+                    "grep",
+                    "locate"
+                ],
+                answer: 2
+            },
+            {
+                question: "The 'sudo' command in Linux is used to:",
+                options: [
+                    "Shut down the computer",
+                    "Run a command with superuser privileges",
+                    "List all users",
+                    "Update the system software"
+                ],
+                answer: 1
+            },
+            {
+                question: "In a GUI, a mouse 'Drag' operation is used to:",
+                options: [
+                    "Select an object",
+                    "Open an application",
+                    "Move an object from one location to another",
+                    "Scroll the screen"
+                ],
+                answer: 2
+            },
+            {
+                question: "The 'EXIT' command in DOS is used to:",
+                options: [
+                    "Shut down the computer",
+                    "Close the Command Prompt window",
+                    "Log off the current user",
+                    "Restart the computer"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which DOS command can be used to edit a text file like 'autoexec.bat'?",
+                options: [
+                    "TYPE",
+                    "EDIT",
+                    "NOTEPAD",
+                    "MODIFY"
+                ],
+                answer: 1
+            },
+            {
+                question: "The 'CHKDSK' command is used to:",
+                options: [
+                    "Change the disk",
+                    "Check a disk for errors and correct them",
+                    "Copy a disk",
+                    "Clean the disk physically"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which of these is a function of OS Security Management?",
+                options: [
+                    "Providing backup and recovery of data",
+                    "Managing the mouse and keyboard",
+                    "Allocating memory to processes",
+                    "Managing files and folders"
+                ],
+                answer: 0
+            },
+            {
+                question: "The '>' symbol in DOS is used for:",
+                options: [
+                    "Greater-than comparison",
+                    "Redirecting output",
+                    "Pausing command execution",
+                    "Displaying help"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which Linux command is used to create an empty file?",
+                options: [
+                    "new",
+                    "create",
+                    "touch",
+                    "mkfile"
+                ],
+                answer: 2
+            },
+            {
+                question: "The 'cp' command in Linux is used to:",
+                options: [
+                    "Change permissions",
+                    "Copy files and directories",
+                    "Compare files",
+                    "Compress files"
+                ],
+                answer: 1
+            },
+            {
+                question: "The main purpose of an OS's File Management system is to:",
+                options: [
+                    "Keep track of stored data and manage file requests",
+                    "Physically clean the hard drive",
+                    "Increase file storage capacity",
+                    "Design new file formats"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which of the following is a key feature of the Linux operating system?",
+                options: [
+                    "It is proprietary software",
+                    "It is open-source and can be freely shared",
+                    "It was developed by Microsoft",
+                    "It only runs on supercomputers"
+                ],
+                answer: 1
+            }
+        ];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const currentQElement = document.getElementById('current-q');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const scoreElement = document.getElementById('score');
+        const finalScoreElement = document.getElementById('final-score');
+        const scoreTextElement = document.getElementById('score-text');
+        const timeElement = document.getElementById('time');
+        const progressElement = document.getElementById('progress');
+
+        // Quiz state
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let timeLeft = 20 * 60; // 20 minutes in seconds
+        let timerInterval;
+
+        // Initialize the quiz
+        function initQuiz() {
+            showQuestion();
+            startTimer();
+            updateProgress();
+        }
+
+        // Display current question
+        function showQuestion() {
+            const question = quizData[currentQuestion];
+            questionText.textContent = question.question;
+            currentQElement.textContent = currentQuestion + 1;
+            
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.textContent = option;
+                
+                if (userAnswers[currentQuestion] === index) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.addEventListener('click', () => selectOption(index));
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            updateNavigationButtons();
+        }
+
+        // Select an option
+        function selectOption(index) {
+            userAnswers[currentQuestion] = index;
+            showQuestion();
+            
+            // Automatically calculate score as user answers
+            calculateScore();
+        }
+
+        // Update navigation buttons state
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.disabled = currentQuestion === quizData.length - 1;
+        }
+
+        // Calculate current score
+        function calculateScore() {
+            score = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer === quizData[index].answer) {
+                    score++;
+                }
+            });
+            scoreElement.textContent = score;
+        }
+
+        // Navigate to next question
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+                updateProgress();
+            }
+        }
+
+        // Navigate to previous question
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+                updateProgress();
+            }
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressElement.style.width = `${progress}%`;
+        }
+
+        // Start the timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timeElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    endQuiz();
+                }
+            }, 1000);
+        }
+
+        // End the quiz and show results
+        function endQuiz() {
+            clearInterval(timerInterval);
+            calculateScore();
+            
+            quizContainer.style.display = 'none';
+            resultsContainer.style.display = 'block';
+            
+            finalScoreElement.textContent = score;
+            scoreTextElement.textContent = `You scored ${score} out of ${quizData.length}`;
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            timeLeft = 20 * 60;
+            
+            scoreElement.textContent = '0';
+            timeElement.textContent = '20:00';
+            
+            quizContainer.style.display = 'block';
+            resultsContainer.style.display = 'none';
+            
+            initQuiz();
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', prevQuestion);
+        nextBtn.addEventListener('click', nextQuestion);
+        submitBtn.addEventListener('click', endQuiz);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize the quiz
+        initQuiz();
+    </script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Fundamentals Quiz</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+        .question-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .answer {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+        .show-answer {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .show-answer:hover {
+            background-color: #2980b9;
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .correct {
+            color: #27ae60;
+        }
+        .incorrect {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Computer Fundamentals Quiz</h1>
+    
+    <div class="category">
+        <h2>Computer Basics</h2>
+        
+        <div class="question-container">
+            <div class="question">31. What does GIGO stand for?</div>
+            <button class="show-answer" onclick="toggleAnswer(31)">Show Answer</button>
+            <div class="answer" id="answer-31">Garbage In Garbage Out.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">32. Name the two types of primary memory.</div>
+            <button class="show-answer" onclick="toggleAnswer(32)">Show Answer</button>
+            <div class="answer" id="answer-32">RAM and ROM.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">33. Name the two main categories of software.</div>
+            <button class="show-answer" onclick="toggleAnswer(33)">Show Answer</button>
+            <div class="answer" id="answer-33">System Software and Application Software.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">What type of user interface does MS-DOS use?</div>
+            <button class="show-answer" onclick="toggleAnswer(34)">Show Answer</button>
+            <div class="answer" id="answer-34">Command Line Interface (CLI) or Character User Interface (CUI).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">58. What does GIGO stand for?</div>
+            <button class="show-answer" onclick="toggleAnswer(58)">Show Answer</button>
+            <div class="answer" id="answer-58">Garbage In, Garbage Out.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">59. Name the two types of primary memory.</div>
+            <button class="show-answer" onclick="toggleAnswer(59)">Show Answer</button>
+            <div class="answer" id="answer-59">RAM (Random Access Memory) and ROM (Read Only Memory).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">60. Name the two main categories of software.</div>
+            <button class="show-answer" onclick="toggleAnswer(60)">Show Answer</button>
+            <div class="answer" id="answer-60">System Software and Application Software.</div>
+        </div>
+    </div>
+    
+    <div class="category">
+        <h2>Networking</h2>
+        
+        <div class="question-container">
+            <div class="question">34. What does LAN stand for?</div>
+            <button class="show-answer" onclick="toggleAnswer(35)">Show Answer</button>
+            <div class="answer" id="answer-35">Local Area Network.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">35. What is the function of a modem?</div>
+            <button class="show-answer" onclick="toggleAnswer(36)">Show Answer</button>
+            <div class="answer" id="answer-36">To convert digital signals to analog and vice versa for data transmission.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">47. What is a computer network?</div>
+            <button class="show-answer" onclick="toggleAnswer(47)">Show Answer</button>
+            <div class="answer" id="answer-47">A computer network is a system of interconnected computers and devices that can communicate and share resources.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">48. Define the term 'client' in networking.</div>
+            <button class="show-answer" onclick="toggleAnswer(48)">Show Answer</button>
+            <div class="answer" id="answer-48">A client is a computer or workstation that requests and uses resources or services from a server.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">49. What does MODEM stand for?</div>
+            <button class="show-answer" onclick="toggleAnswer(49)">Show Answer</button>
+            <div class="answer" id="answer-49">MODEM stands for Modulator-Demodulator.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">50. Name any two types of modems.</div>
+            <button class="show-answer" onclick="toggleAnswer(50)">Show Answer</button>
+            <div class="answer" id="answer-50">Wired modem and Wireless modem.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">61. What does LAN stand for?</div>
+            <button class="show-answer" onclick="toggleAnswer(61)">Show Answer</button>
+            <div class="answer" id="answer-61">Local Area Network.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">62. What is the function of a modem?</div>
+            <button class="show-answer" onclick="toggleAnswer(62)">Show Answer</button>
+            <div class="answer" id="answer-62">To modulate digital signals from a computer into analog signals for transmission over telephone lines and to demodulate incoming analog signals back into digital signals.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">76. Define topology in networking.</div>
+            <button class="show-answer" onclick="toggleAnswer(76)">Show Answer</button>
+            <div class="answer" id="answer-76">Topology refers to the physical or logical arrangement of computers and other devices (like printers, switches) in a network.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">77. What is the difference between wired and wireless technology?</div>
+            <button class="show-answer" onclick="toggleAnswer(77)">Show Answer</button>
+            <div class="answer" id="answer-77">Wired technology uses physical cables (like Ethernet cables) to connect devices, while wireless technology uses radio waves or infrared signals to connect devices without physical cables.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">78. What is the main drawback of linear bus topology?</div>
+            <button class="show-answer" onclick="toggleAnswer(78)">Show Answer</button>
+            <div class="answer" id="answer-78">The main drawback is that if the main cable (the backbone) fails or breaks, the entire network breaks down and becomes unusable.</div>
+        </div>
+    </div>
+    
+    <div class="category">
+        <h2>Multimedia</h2>
+        
+        <div class="question-container">
+            <div class="question">36. Name any two components of multimedia.</div>
+            <button class="show-answer" onclick="toggleAnswer(37)">Show Answer</button>
+            <div class="answer" id="answer-37">Text and Audio (or Images, Animation, Video).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">37. What is the common file format for an image file?</div>
+            <button class="show-answer" onclick="toggleAnswer(38)">Show Answer</button>
+            <div class="answer" id="answer-38">JPEG (.jpg) or GIF (.gif).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">53. What is the full form of MIDI?</div>
+            <button class="show-answer" onclick="toggleAnswer(53)">Show Answer</button>
+            <div class="answer" id="answer-53">MIDI stands for Musical Instrument Digital Interface.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">63. Name any two components of multimedia.</div>
+            <button class="show-answer" onclick="toggleAnswer(63)">Show Answer</button>
+            <div class="answer" id="answer-63">Text and Graphics (or Audio, Video, Animation).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">64. What is the common file format for an image file?</div>
+            <button class="show-answer" onclick="toggleAnswer(64)">Show Answer</button>
+            <div class="answer" id="answer-64">JPEG (or PNG, GIF, BMP).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">79. Mention any two commonly used multimedia software.</div>
+            <button class="show-answer" onclick="toggleAnswer(79)">Show Answer</button>
+            <div class="answer" id="answer-79">Adobe Photoshop (for graphics) and VLC Media Player (for audio/video playback).</div>
+        </div>
+    </div>
+    
+    <div class="category">
+        <h2>Programming & Algorithms</h2>
+        
+        <div class="question-container">
+            <div class="question">38. What is an algorithm?</div>
+            <button class="show-answer" onclick="toggleAnswer(39)">Show Answer</button>
+            <div class="answer" id="answer-39">A step-by-step instruction for solving a problem.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">39. Which symbol in a flowchart is used for a decision?</div>
+            <button class="show-answer" onclick="toggleAnswer(40)">Show Answer</button>
+            <div class="answer" id="answer-40">Rhombus (Diamond shape).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">40. Name one input function in C language.</div>
+            <button class="show-answer" onclick="toggleAnswer(41)">Show Answer</button>
+            <div class="answer" id="answer-41">scanf()</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">54. What is an algorithm?</div>
+            <button class="show-answer" onclick="toggleAnswer(54)">Show Answer</button>
+            <div class="answer" id="answer-54">An algorithm is a step-by-step procedure or set of rules to solve a problem or perform a task.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">55. Who developed the C programming language?</div>
+            <button class="show-answer" onclick="toggleAnswer(55)">Show Answer</button>
+            <div class="answer" id="answer-55">C programming was developed by Dennis Ritchie at Bell Laboratories.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">57. What is the keyword used to include header files?</div>
+            <button class="show-answer" onclick="toggleAnswer(57)">Show Answer</button>
+            <div class="answer" id="answer-57">#include</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">65. What is an algorithm?</div>
+            <button class="show-answer" onclick="toggleAnswer(65)">Show Answer</button>
+            <div class="answer" id="answer-65">A step-by-step procedure or set of rules to solve a problem.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">67. Which symbol in a flowchart is used for a decision?</div>
+            <button class="show-answer" onclick="toggleAnswer(67)">Show Answer</button>
+            <div class="answer" id="answer-67">A diamond shape.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">68. Name one input function in C language.</div>
+            <button class="show-answer" onclick="toggleAnswer(68)">Show Answer</button>
+            <div class="answer" id="answer-68">scanf().</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">71. Who developed the C programming language?</div>
+            <button class="show-answer" onclick="toggleAnswer(71)">Show Answer</button>
+            <div class="answer" id="answer-71">Dennis Ritchie.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">72. What is the keyword used to include header files?</div>
+            <button class="show-answer" onclick="toggleAnswer(72)">Show Answer</button>
+            <div class="answer" id="answer-72">#include</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">73. Answer the following questions:
+                <br>(a) Name any two operators used in C programming
+                <br>(b) Which loop is known as Entry Control Loop?
+                <br>(c) What is Potluck Paper?
+            </div>
+            <button class="show-answer" onclick="toggleAnswer(73)">Show Answer</button>
+            <div class="answer" id="answer-73">
+                (a) Arithmetic operators (e.g., +, -) and Relational operators (e.g., ==, <).
+                <br>(b) The while loop (or for loop).
+                <br>(c) A paper composed of parts taken from various sources, often without proper attribution (a form of plagiarism).
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">74. What is the difference between a constant and a variable?</div>
+            <button class="show-answer" onclick="toggleAnswer(74)">Show Answer</button>
+            <div class="answer" id="answer-74">
+                • A variable is a named memory location whose value can change during program execution.
+                <br>• A constant is a named memory location whose value is fixed and cannot be altered after it is defined.
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">75. What does the %d format specifier represent in C?</div>
+            <button class="show-answer" onclick="toggleAnswer(75)">Show Answer</button>
+            <div class="answer" id="answer-75">The %d format specifier is used in C to read or print an integer (int) value.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">81. What is an algorithm?</div>
+            <button class="show-answer" onclick="toggleAnswer(81)">Show Answer</button>
+            <div class="answer" id="answer-81">A step-by-step procedure or a set of rules designed to solve a specific problem or perform a computation.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">82. What is pseudocode?</div>
+            <button class="show-answer" onclick="toggleAnswer(82)">Show Answer</button>
+            <div class="answer" id="answer-82">A simplified, human-readable outline of a program that uses the structural conventions of programming languages but is intended for human reading rather than machine execution.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">83. How to declare a header file in C programming?</div>
+            <button class="show-answer" onclick="toggleAnswer(83)">Show Answer</button>
+            <div class="answer" id="answer-83">Using the #include preprocessor directive, for example: #include <stdio.h>.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">84. What is the use of Add AND operator?</div>
+            <button class="show-answer" onclick="toggleAnswer(84)">Show Answer</button>
+            <div class="answer" id="answer-84">The Add AND operator (+=) adds the right operand to the left operand and then assigns the result back to the left operand. (e.g., a += 5 is equivalent to a = a + 5).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">85. Which operator is also known as ternary operator?</div>
+            <button class="show-answer" onclick="toggleAnswer(85)">Show Answer</button>
+            <div class="answer" id="answer-85">The conditional operator (? :).</div>
+        </div>
+    </div>
+    
+    <div class="category">
+        <h2>Ethics & Security</h2>
+        
+        <div class="question-container">
+            <div class="question">41. What is plagiarism?</div>
+            <button class="show-answer" onclick="toggleAnswer(42)">Show Answer</button>
+            <div class="answer" id="answer-42">Copying someone else's work and presenting it as your own.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">42. Which symbol is used to denote copyright?</div>
+            <button class="show-answer" onclick="toggleAnswer(43)">Show Answer</button>
+            <div class="answer" id="answer-43">©</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">43. What is the illegal reproduction or distribution of software called?</div>
+            <button class="show-answer" onclick="toggleAnswer(44)">Show Answer</button>
+            <div class="answer" id="answer-44">Software Piracy.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">44. Name one measure to secure a computer system.</div>
+            <button class="show-answer" onclick="toggleAnswer(45)">Show Answer</button>
+            <div class="answer" id="answer-45">Install antivirus software. (or use a password, install a firewall, Use data encryption)</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">69. What is plagiarism?</div>
+            <button class="show-answer" onclick="toggleAnswer(69)">Show Answer</button>
+            <div class="answer" id="answer-69">The act of using someone else's work or ideas without giving proper credit.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">70. What is the illegal reproduction or distribution of software called?</div>
+            <button class="show-answer" onclick="toggleAnswer(70)">Show Answer</button>
+            <div class="answer" id="answer-70">Software Piracy.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">86. What is the full form of IPR?</div>
+            <button class="show-answer" onclick="toggleAnswer(86)">Show Answer</button>
+            <div class="answer" id="answer-86">Intellectual Property Rights.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">87. Name any two types of Plagiarism.</div>
+            <button class="show-answer" onclick="toggleAnswer(87)">Show Answer</button>
+            <div class="answer" id="answer-87">Direct Plagiarism and Self-Plagiarism.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">88. What does the symbol © refer to?</div>
+            <button class="show-answer" onclick="toggleAnswer(88)">Show Answer</button>
+            <div class="answer" id="answer-88">Copyright.</div>
+        </div>
+    </div>
+    
+    <div class="category">
+        <h2>Operating Systems & Data</h2>
+        
+        <div class="question-container">
+            <div class="question">45. What is the function of an Operating System?</div>
+            <button class="show-answer" onclick="toggleAnswer(46)">Show Answer</button>
+            <div class="answer" id="answer-46">To act as an interface between the user and the computer hardware.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">46. Name one type of language translator.</div>
+            <button class="show-answer" onclick="toggleAnswer(47)">Show Answer</button>
+            <div class="answer" id="answer-47">Compiler (or Interpreter, or Assembler).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">51. What is the primary language used by computers to communicate?</div>
+            <button class="show-answer" onclick="toggleAnswer(51)">Show Answer</button>
+            <div class="answer" id="answer-51">Machine language (binary code: 0s and 1s).</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">52. What is information?</div>
+            <button class="show-answer" onclick="toggleAnswer(52)">Show Answer</button>
+            <div class="answer" id="answer-52">Information is processed, organized, or structured data that is meaningful and useful.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">80. What is data in a computer system?</div>
+            <button class="show-answer" onclick="toggleAnswer(80)">Show Answer</button>
+            <div class="answer" id="answer-80">Data is a collection of raw, unorganized facts and figures (like numbers, text, images, sounds) that a computer processes to convert it into meaningful information.</div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question">89. Name one single user operating system.</div>
+            <button class="show-answer" onclick="toggleAnswer(89)">Show Answer</button>
+            <div class="answer" id="answer-89">MS-DOS (or Windows XP, for example).</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionId) {
+            const answerElement = document.getElementById(`answer-${questionId}`);
+            if (answerElement.style.display === 'block') {
+                answerElement.style.display = 'none';
+            } else {
+                answerElement.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
